@@ -20,60 +20,50 @@ public class PopulacaoMariposas extends Populacao {
 			this.melhorIndividuo = this.individuos[individuos.length - 1];
 		}
 	}
+	
+	private int calculoDistancia(final int valorAmbiente , final int valorGene) {
+		
+		int distancia = valorAmbiente - valorGene;
+		return distancia < 0 ? distancia*-1 : distancia;
+	}
+	
+	private double calculaNota(final int distancia) {
+		
+		int pontuacaoBase = 1000;
+		int nota = 0;
+		
+		if (distancia > 25) {
+			nota = (pontuacaoBase - distancia) / 2;
+		} else if (distancia  == 0) {
+			nota += pontuacaoBase + 255;	
+		} else {
+			nota = pontuacaoBase - distancia;
+		}
+		
+		return nota;
+	}
 
 	@Override
 	public double avalia(Cromossomo cromossomo) {
 
-		double nota = 0;
-		int pontuacaoBase = 1000;
 		
+		//Ambiente
 		int valorAmbienteVermelho = Ambiente.getAmbienteAtual().getVermelho();
 		int valorAmbienteVerde = Ambiente.getAmbienteAtual().getVerde();
 		int valorAmbienteAzul = Ambiente.getAmbienteAtual().getAzul();
 		
+		//Valores dos Genes
 		int valorGeneVermelho = cromossomo.getGenes()[0].getValor();
 		int valorGeneVerde = cromossomo.getGenes()[1].getValor();
 		int valorGeneAzul = cromossomo.getGenes()[2].getValor();
 		
-		int distanciaVermelho = (valorAmbienteVermelho - valorGeneVermelho);
-		if (distanciaVermelho < 0) distanciaVermelho*=-1;
+		//Definindo as Distancias do Alvo
+		int distanciaVermelho = calculoDistancia(valorAmbienteVermelho , valorGeneVermelho);
+		int distanciaVerde = calculoDistancia(valorAmbienteVerde , valorGeneVerde);
+		int distanciaAzul = calculoDistancia(valorAmbienteAzul , valorGeneAzul);
 		
-		int distanciaVerde = (valorAmbienteVerde - valorGeneVerde);
-		if (distanciaVerde < 0) distanciaVerde*=-1;
 		
-		int distanciaAzul = (valorAmbienteAzul - valorGeneAzul);
-		if (distanciaAzul < 0) distanciaAzul*=-1;
-		
-		//Vermelho
-		if (distanciaVermelho > 25) {
-			nota = (pontuacaoBase - distanciaVermelho) / 2;
-		} else if (distanciaVermelho  == 0) {
-			nota += pontuacaoBase  + 25;	
-		} else {
-			nota = pontuacaoBase - distanciaVermelho;
-		}
-		
-		//Verde
-		if (distanciaVerde > 25) {
-			nota+= (pontuacaoBase - distanciaVerde) / 2;
-		} else if (distanciaVerde  == 0) {
-			nota += pontuacaoBase  + 25 ;	
-		} else {
-			nota += pontuacaoBase - distanciaVerde;
-		}
-		
-		//Azul
-		if (distanciaAzul > 25) {
-			nota+= (pontuacaoBase - distanciaAzul) / 2;
-		} else if (distanciaAzul  == 0) {
-			nota += pontuacaoBase  + 25;	
-		} else {
-			nota += pontuacaoBase - distanciaAzul;
-		}
-		
-		nota/=3;
-		
-		return nota;
+        return calculaNota(distanciaVermelho) + calculaNota(distanciaVerde) + calculaNota(distanciaAzul);		
 	}
 	
 }

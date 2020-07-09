@@ -1,8 +1,10 @@
 package com.logicaevolutiva.ga.evolucao;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 
 /**
  * Classe de definicao dos mecanismos de Selecao Natural
@@ -27,11 +29,15 @@ private static final Logger log = LoggerFactory.getLogger(SelecaoNatural.class);
 	private double taxaMutacao;
 	//Tamanho do espaco de busca.
 	private int tamanhoEspacoBusca;
+	//Melhor solucao encontrada.
+	private Individuo melhorCromossomo;
+	//Em que geracao a melhor solucao foi encontrada.
+	private int melhorGeracao;
 	
 	public static void main (String ...strings) {
 		
-		SelecaoNatural selecaoNatural = new SelecaoNatural(10000,
-				255, 0.4, 0.09);
+		SelecaoNatural selecaoNatural = new SelecaoNatural(15000,
+				255, 0.5, 0.03);
 		
 		selecaoNatural.evoluir();
 		
@@ -53,6 +59,7 @@ private static final Logger log = LoggerFactory.getLogger(SelecaoNatural.class);
 		this.taxaCrossOver = taxaCrossOver;
 		this.taxaMutacao = taxaMutacao;
 		this.tamanhoEspacoBusca = tamanhoEspacoBusca;
+
 	}	
 		
 	/**
@@ -82,6 +89,8 @@ private static final Logger log = LoggerFactory.getLogger(SelecaoNatural.class);
 		//Executa a primeira avaliacao da populacao.
 		populacao.executaCalculoAvaliacaoPopulacional();
 		
+		//Configura a melhor solucao da primeira geracao.
+		this.melhorCromossomo = populacao.getMelhorIndividuo();
 		
 		while (controleEvolucao.getStatus() == ControleEvolucao.Status.ATIVA) {
 			
@@ -93,14 +102,21 @@ private static final Logger log = LoggerFactory.getLogger(SelecaoNatural.class);
 			
 			int contagemIndividuos = 0;
 			
-			if (log.isDebugEnabled()) {
+			if (log.isDebugEnabled() && this.melhorCromossomo.getFitness() > 0) {
 				
+				log.debug("Darwin LE - -----------------------------------------------------------");
+				log.debug("Darwin LE - [Analise da populacao com o individuo melhor adaptado]");
+				log.debug("Darwin LE - Fitness: " + this.melhorCromossomo.getFitness() );
+				log.debug("Darwin LE - Geracao: " + this.melhorGeracao );
 				log.debug("Darwin LE - Melhor Cromossomo: " + 
-					     populacao.getMelhorIndividuo().getCromossomo().getGenes()[0].getValor() + "*" + 
-					     populacao.getMelhorIndividuo().getCromossomo().getGenes()[1].getValor() + "*" + 
-					     populacao.getMelhorIndividuo().getCromossomo().getGenes()[2].getValor() 
+						this.melhorCromossomo.getCromossomo().getGenes()[0].getValor() + "*" + 
+						this.melhorCromossomo.getCromossomo().getGenes()[1].getValor() + "*" + 
+						this.melhorCromossomo.getCromossomo().getGenes()[2].getValor() 
 							);
 					log.debug("\n");
+					
+					log.debug("Darwin LE - -----------------------------------------------------------");
+
 				
 				for (int a = 0 ; a < populacao.getIndividuos().length; a++) {
 					
@@ -147,10 +163,40 @@ private static final Logger log = LoggerFactory.getLogger(SelecaoNatural.class);
 				
 				novaGeracao.setIndividuos(filhos[1], contagemIndividuos);
 				contagemIndividuos++;
+				
+			}
+			
+			if (geracao == 20) {
+				
+				ambiente.setAzul(AleatoriedadeGeneticaUtil.random.nextInt(255));
+				ambiente.setVerde(AleatoriedadeGeneticaUtil.random.nextInt(255));
+				ambiente.setVermelho(AleatoriedadeGeneticaUtil.random.nextInt(255));
+				
+				
+				
+				System.out.println(ambiente.getVermelho());
+				System.out.println(ambiente.getVerde());
+				System.out.println(ambiente.getAzul());
+				
+				try {
+					Thread.sleep(3000);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+				this.melhorCromossomo.setFitness(0);
 			}
 			
 			//Avalia a proeficiencia de toda a nova populacao.
 			novaGeracao.executaCalculoAvaliacaoPopulacional();
+			
+			//Se o melhor individuo da nova populacao for melhor do que o da anterior
+			//ele passa a ser a melhor solucao.
+			if (novaGeracao.getMelhorIndividuo().getFitness() > melhorCromossomo.getFitness()) {
+				this.melhorCromossomo = novaGeracao.getMelhorIndividuo();
+				this.melhorGeracao = geracao;
+			}
 			
 			//A nova populacao a ter os individuos mais aptos das geracoes.
 			 populacao = novaGeracao;
