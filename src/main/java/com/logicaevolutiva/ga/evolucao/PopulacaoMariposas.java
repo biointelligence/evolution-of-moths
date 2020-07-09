@@ -35,7 +35,7 @@ public class PopulacaoMariposas extends Populacao {
 		if (distancia > 25) {
 			nota = (pontuacaoBase - distancia) / 2;
 		} else if (distancia  == 0) {
-			nota += pontuacaoBase + 255;	
+			nota = pontuacaoBase + 255;	
 		} else {
 			nota = pontuacaoBase - distancia;
 		}

@@ -185,6 +185,8 @@ private static final Logger log = LoggerFactory.getLogger(SelecaoNatural.class);
 					e.printStackTrace();
 				}
 				
+				novaGeracao = new PopulacaoMariposas(tamanhoPopulacao, tamanhoCromossomo, tamanhoEspacoBusca,
+						geracao, true);
 				this.melhorCromossomo.setFitness(0);
 			}
 			
