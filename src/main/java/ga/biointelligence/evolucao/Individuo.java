@@ -1,5 +1,6 @@
 package ga.biointelligence.evolucao;
 
+import ga.biointelligence.evolucao.util.AleatoriedadeGeneticaUtil;
 
 /**
  * 

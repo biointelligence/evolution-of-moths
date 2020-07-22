@@ -1,35 +1,40 @@
 package logicaevolutiva.ga.virtual.population.controller;
 
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.scheduling.annotation.EnableScheduling;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.util.HtmlUtils;
 
-import ga.biointelligence.evolucao.EvolutionOfMoths;
 import ga.biointelligence.evolucao.Mariposa;
+import ga.biointelligence.evolucao.gerenciamento.ControlePopulacaoAtual;
+import ga.biointelligence.evolucao.gerenciamento.EvolutionOfMoths;
+import logicaevolutiva.ga.virtual.population.config.WebSocketConfig;
 
 @Controller
-@EnableScheduling 
+@EnableScheduling
 public class EvolutionController {
-	
-	private final String clientHash = "DA92A37C668AC18A1756358D3BCD73A34D04A395";
 
+	private static final Logger log = LoggerFactory.getLogger(EvolutionController.class);
+
+	// Escutando as mensagens do topico evolutionmoths.
 	@MessageMapping("/evolution")
 	@SendTo("/topic/evolutionofmoths")
-	public EvolutionOfMoths getMariposa(final String clientHash) throws Exception {
-		
-		EvolutionOfMoths evolutionOfMoths = null;
-		
-		if (this.clientHash.equals(clientHash)) {
-			evolutionOfMoths = new EvolutionOfMoths();
-			evolutionOfMoths.setGeracaoAtual(2000);
-			System.out.println("QUANTIDADE " + evolutionOfMoths.getGeracaoAtual());
-		}
-		
+	public EvolutionOfMoths getMariposa(final Date dataMensagem) throws Exception {
+
+		final EvolutionOfMoths evolutionOfMoths = new EvolutionOfMoths();
+
+		final List<Mariposa> mariposas = ControlePopulacaoAtual.getPopulacaoAtual().getMariposas();
+		evolutionOfMoths.setMariposas(mariposas);
+		evolutionOfMoths.setGeracaoAtual(2000);
+
+
 		return evolutionOfMoths;
 	}
-	
-	
+
 }

@@ -1,5 +1,7 @@
-package ga.biointelligence.evolucao;
+package ga.biointelligence.evolucao.util;
 
+import ga.biointelligence.evolucao.Individuo;
+import ga.biointelligence.evolucao.Populacao;
 
 public class SelecaoIndividuosUtil {
 	

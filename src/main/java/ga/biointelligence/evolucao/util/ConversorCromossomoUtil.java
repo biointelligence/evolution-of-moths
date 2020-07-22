@@ -1,5 +1,6 @@
-package ga.biointelligence.evolucao;
+package ga.biointelligence.evolucao.util;
 
+import ga.biointelligence.evolucao.Gene;
 
 /**
  * Classe utilitaria que prove operacoes de conversao 

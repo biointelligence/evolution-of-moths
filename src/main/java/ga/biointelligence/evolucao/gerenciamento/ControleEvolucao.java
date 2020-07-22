@@ -1,4 +1,4 @@
-package ga.biointelligence.evolucao;
+package ga.biointelligence.evolucao.gerenciamento;
 
 /**
  * Classe que gerencia o controle da Evolucao.

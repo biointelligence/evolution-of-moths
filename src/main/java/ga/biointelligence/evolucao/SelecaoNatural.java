@@ -6,6 +6,12 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import ga.biointelligence.evolucao.gerenciamento.ControleEvolucao;
+import ga.biointelligence.evolucao.gerenciamento.ControlePopulacaoAtual;
+import ga.biointelligence.evolucao.util.AleatoriedadeGeneticaUtil;
+import ga.biointelligence.evolucao.util.SelecaoIndividuosUtil;
+import logicaevolutiva.ga.virtual.population.websocket.client.EvolutionClientSocket;
+
 /**
  * Classe de definicao dos mecanismos de Selecao Natural
  * com a finalidade de identificar os melhores produtos a partir de uma 
@@ -73,6 +79,7 @@ private static final Logger log = LoggerFactory.getLogger(SelecaoNatural.class);
 		int geracao = 0;
 		
 		final SelecaoIndividuosUtil selecaoIndividuosUtil = new SelecaoIndividuosUtil();
+		final EvolutionClientSocket clientSocket = new EvolutionClientSocket();
 		
 		final ControleEvolucao controleEvolucao = ControleEvolucao.getControleEvolucao();
 		controleEvolucao.setStatus(ControleEvolucao.Status.ATIVA);
@@ -101,6 +108,8 @@ private static final Logger log = LoggerFactory.getLogger(SelecaoNatural.class);
 			
 			//Atualiza a informacao da Populacao Atual
 			ControlePopulacaoAtual.getPopulacaoAtual().setPopulacaoMariposas(populacao);
+			clientSocket.atualizarTopico();
+
 			
 			log.debug("Darwin LE - -----------------------------------------------------------");
 			log.debug("Darwin LE - [Analise de Cromossomo da geracao : " +  geracao + "] \n");
