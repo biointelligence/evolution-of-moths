@@ -1,4 +1,4 @@
-package com.logicaevolutiva.ga.evolucao;
+package ga.biointelligence.evolucao;
 
 /**
  * Classe que define a populacao para solucao do problema referente a
@@ -32,11 +32,14 @@ public class PopulacaoMariposas extends Populacao {
 		int pontuacaoBase = 1000;
 		int nota = 0;
 		
-		if (distancia > 25) {
+		if (distancia > 25) { 
+			//Penaliza o Gene que esta com a distancia superior a aproximadamente 10% do valor da cor do ambiente.
 			nota = (pontuacaoBase - distancia) / 2;
 		} else if (distancia  == 0) {
+			//Premia o Gene que encontra a Cor do ambiente.
 			nota = pontuacaoBase + 255;	
-		} else {
+		} else { 
+			//Calcula a nota baseado na aproxima do valor do ambiente.
 			nota = pontuacaoBase - distancia;
 		}
 		

@@ -1,4 +1,4 @@
-package com.logicaevolutiva.ga.evolucao;
+package ga.biointelligence.evolucao;
 
 import java.io.Serializable;
 
@@ -10,6 +10,10 @@ import java.io.Serializable;
  */
 public class Mariposa implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 221563010146915614L;
 	private int vermelho;
 	private int verde;
 	private int azul;

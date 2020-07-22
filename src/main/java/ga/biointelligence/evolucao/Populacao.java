@@ -1,4 +1,4 @@
-package com.logicaevolutiva.ga.evolucao;
+package ga.biointelligence.evolucao;
 
 /**
  * Classe que tem como funcao definir a mecanica de uma Populacao.

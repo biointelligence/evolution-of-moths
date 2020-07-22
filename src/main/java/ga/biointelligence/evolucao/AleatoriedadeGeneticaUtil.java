@@ -1,4 +1,4 @@
-package com.logicaevolutiva.ga.evolucao;
+package ga.biointelligence.evolucao;
 
 import java.util.Date;
 import java.util.Random;
@@ -11,7 +11,5 @@ import java.util.Random;
 public class AleatoriedadeGeneticaUtil {
 	
     public static Random random = new Random(new Date().getTime());
-    
-    
     
 }

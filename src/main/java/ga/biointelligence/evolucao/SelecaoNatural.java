@@ -1,4 +1,4 @@
-package com.logicaevolutiva.ga.evolucao;
+package ga.biointelligence.evolucao;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,13 +34,15 @@ private static final Logger log = LoggerFactory.getLogger(SelecaoNatural.class);
 	//Em que geracao a melhor solucao foi encontrada.
 	private int melhorGeracao;
 	
+	private final int INTERVALO_ENTRE_GERACOES = 10000;
+	private final int QTD_MAX_GERACAO_AMBIENTE = 20;
+	
 	public static void main (String ...strings) {
 		
 		SelecaoNatural selecaoNatural = new SelecaoNatural(15000,
 				255, 0.5, 0.03);
 		
-		selecaoNatural.evoluir();
-		
+			selecaoNatural.evoluir();
 	}
 
 	/**
@@ -64,6 +66,7 @@ private static final Logger log = LoggerFactory.getLogger(SelecaoNatural.class);
 		
 	/**
 	 * Executa o processo evolutivo
+	 * @throws InterruptedException 
 	 */
 	public void evoluir() {
 		
@@ -77,9 +80,9 @@ private static final Logger log = LoggerFactory.getLogger(SelecaoNatural.class);
 		//Configuracao inicial do Ambiente
 		final Ambiente ambiente = Ambiente.getAmbienteAtual();
 		
-		ambiente.setAzul(130);
-		ambiente.setVerde(130);
-		ambiente.setVermelho(130);
+		ambiente.setAzul(AleatoriedadeGeneticaUtil.random.nextInt(255));
+		ambiente.setVerde(AleatoriedadeGeneticaUtil.random.nextInt(255));
+		ambiente.setVermelho(AleatoriedadeGeneticaUtil.random.nextInt(255));
 		
 	    //Cria e popula aletoriamente com Individuos a primeira geracao.
 		//Geracao inicial: 0 .
@@ -96,10 +99,12 @@ private static final Logger log = LoggerFactory.getLogger(SelecaoNatural.class);
 			
 			geracao++;
 			
+			//Atualiza a informacao da Populacao Atual
+			PopulacaoAtual.getPopulacaoAtual().setMariposas(populacao);
+			
 			log.debug("Darwin LE - -----------------------------------------------------------");
 			log.debug("Darwin LE - [Analise de Cromossomo da geracao : " +  geracao + "] \n");
 
-			
 			int contagemIndividuos = 0;
 			
 			if (log.isDebugEnabled() && this.melhorCromossomo.getFitness() > 0) {
@@ -134,7 +139,6 @@ private static final Logger log = LoggerFactory.getLogger(SelecaoNatural.class);
 				}
 			}
 			
-			
 			PopulacaoMariposas novaGeracao = new PopulacaoMariposas(tamanhoPopulacao, tamanhoCromossomo, tamanhoEspacoBusca,
 					geracao, false);
 
@@ -166,27 +170,15 @@ private static final Logger log = LoggerFactory.getLogger(SelecaoNatural.class);
 				
 			}
 			
-			if (geracao == 20) {
+			if (geracao == QTD_MAX_GERACAO_AMBIENTE) {
 				
 				ambiente.setAzul(AleatoriedadeGeneticaUtil.random.nextInt(255));
 				ambiente.setVerde(AleatoriedadeGeneticaUtil.random.nextInt(255));
 				ambiente.setVermelho(AleatoriedadeGeneticaUtil.random.nextInt(255));
 				
-				
-				
-				System.out.println(ambiente.getVermelho());
-				System.out.println(ambiente.getVerde());
-				System.out.println(ambiente.getAzul());
-				
-				try {
-					Thread.sleep(3000);
-				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				
 				novaGeracao = new PopulacaoMariposas(tamanhoPopulacao, tamanhoCromossomo, tamanhoEspacoBusca,
 						geracao, true);
+				
 				this.melhorCromossomo.setFitness(0);
 			}
 			
@@ -202,6 +194,12 @@ private static final Logger log = LoggerFactory.getLogger(SelecaoNatural.class);
 			
 			//A nova populacao a ter os individuos mais aptos das geracoes.
 			 populacao = novaGeracao;
+			 
+			 try {
+				Thread.sleep(INTERVALO_ENTRE_GERACOES);
+			} catch (InterruptedException e) {
+				continue;
+			}
 		}
 		
 	}

@@ -24,10 +24,10 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
 		
 		RequestUpgradeStrategy upgradeStrategy = new TomcatRequestUpgradeStrategy();
 		
-		registry.addEndpoint("/gs-guide-websocket")
+		registry.addEndpoint("/evolution-websocket")
 		        .withSockJS();
 
-		registry.addEndpoint("/gs-guide-websocket")
+		registry.addEndpoint("/evolution-websocket")
 		        .setHandshakeHandler(new DefaultHandshakeHandler(upgradeStrategy))
 		        .setAllowedOrigins("*");
 		  
