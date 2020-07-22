@@ -4,23 +4,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Classe que gerencia que gerencia informacoes da populacao de mariposas atual.
+ * Classe que gerencia informacoes da populacao de mariposas atual.
  * 
  * @author aiello
  *
  */
-public class PopulacaoAtual {
+public class ControlePopulacaoAtual {
 
 	private List<Mariposa> mariposas;
-	private static PopulacaoAtual atual;
+	private static ControlePopulacaoAtual atual;
 
-	private PopulacaoAtual() {
+	private ControlePopulacaoAtual() {
 	}
 
-	public static synchronized PopulacaoAtual getPopulacaoAtual() {
+	public static synchronized ControlePopulacaoAtual getPopulacaoAtual() {
 
 		if (atual == null) {
-			return new PopulacaoAtual();
+			return new ControlePopulacaoAtual();
 		}
 
 		return atual;
@@ -30,7 +30,7 @@ public class PopulacaoAtual {
 		return mariposas;
 	}
 
-	public void setMariposas(final PopulacaoMariposas populacao) {
+	public void setPopulacaoMariposas(final PopulacaoMariposas populacao) {
 
 		mariposas = new ArrayList<Mariposa>();
 		Mariposa mariposa = null;

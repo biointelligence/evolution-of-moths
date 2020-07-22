@@ -100,7 +100,7 @@ private static final Logger log = LoggerFactory.getLogger(SelecaoNatural.class);
 			geracao++;
 			
 			//Atualiza a informacao da Populacao Atual
-			PopulacaoAtual.getPopulacaoAtual().setMariposas(populacao);
+			ControlePopulacaoAtual.getPopulacaoAtual().setPopulacaoMariposas(populacao);
 			
 			log.debug("Darwin LE - -----------------------------------------------------------");
 			log.debug("Darwin LE - [Analise de Cromossomo da geracao : " +  geracao + "] \n");
