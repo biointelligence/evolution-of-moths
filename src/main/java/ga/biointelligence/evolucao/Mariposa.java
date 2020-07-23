@@ -18,6 +18,8 @@ public class Mariposa implements Serializable{
 	private int verde;
 	private int azul;
 	
+	private int relevancia;
+	
 	public int getVermelho() {
 		return vermelho;
 	}
@@ -35,6 +37,12 @@ public class Mariposa implements Serializable{
 	}
 	public void setAzul(int azul) {
 		this.azul = azul;
+	}
+	public int getRelevancia() {
+		return relevancia;
+	}
+	public void setRelevancia(int relevancia) {
+		this.relevancia = relevancia;
 	}
 
 }

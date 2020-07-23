@@ -1,16 +1,14 @@
 package ga.biointelligence.evolucao;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import ga.biointelligence.evolucao.gerenciamento.ControleAmbiente;
 import ga.biointelligence.evolucao.gerenciamento.ControleEvolucao;
-import ga.biointelligence.evolucao.gerenciamento.ControlePopulacaoAtual;
+import ga.biointelligence.evolucao.gerenciamento.ControlePopulacao;
 import ga.biointelligence.evolucao.util.AleatoriedadeGeneticaUtil;
 import ga.biointelligence.evolucao.util.SelecaoIndividuosUtil;
-import logicaevolutiva.ga.virtual.population.websocket.client.EvolutionClientSocket;
+import ga.biointelligence.virtualpopulation.websocket.client.EvolutionClientSocket;
 
 /**
  * Classe de definicao dos mecanismos de Selecao Natural
@@ -40,17 +38,9 @@ private static final Logger log = LoggerFactory.getLogger(SelecaoNatural.class);
 	//Em que geracao a melhor solucao foi encontrada.
 	private int melhorGeracao;
 	
-	private final int INTERVALO_ENTRE_GERACOES = 10000;
-	private final int QTD_MAX_GERACAO_AMBIENTE = 20;
+	private final int INTERVALO_ENTRE_GERACOES = 6000;
+	private final int QTD_MAX_GERACAO_AMBIENTE = 40;
 	
-	public static void main (String ...strings) {
-		
-		SelecaoNatural selecaoNatural = new SelecaoNatural(15000,
-				255, 0.5, 0.03);
-		
-			selecaoNatural.evoluir();
-	}
-
 	/**
 	 * Construtor
 	 * @param tamanhoPopulacao - tamanho da populacao.
@@ -84,12 +74,12 @@ private static final Logger log = LoggerFactory.getLogger(SelecaoNatural.class);
 		final ControleEvolucao controleEvolucao = ControleEvolucao.getControleEvolucao();
 		controleEvolucao.setStatus(ControleEvolucao.Status.ATIVA);
 		
-		//Configuracao inicial do Ambiente
-		final Ambiente ambiente = Ambiente.getAmbienteAtual();
+		//Configuracao inicial do ControleAmbiente
+		final ControleAmbiente controleAmbiente = ControleAmbiente.getControle();
 		
-		ambiente.setAzul(AleatoriedadeGeneticaUtil.random.nextInt(255));
-		ambiente.setVerde(AleatoriedadeGeneticaUtil.random.nextInt(255));
-		ambiente.setVermelho(AleatoriedadeGeneticaUtil.random.nextInt(255));
+		controleAmbiente.setAzul(AleatoriedadeGeneticaUtil.random.nextInt(255));
+		controleAmbiente.setVerde(AleatoriedadeGeneticaUtil.random.nextInt(255));
+		controleAmbiente.setVermelho(AleatoriedadeGeneticaUtil.random.nextInt(255));
 		
 	    //Cria e popula aletoriamente com Individuos a primeira geracao.
 		//Geracao inicial: 0 .
@@ -107,7 +97,9 @@ private static final Logger log = LoggerFactory.getLogger(SelecaoNatural.class);
 			geracao++;
 			
 			//Atualiza a informacao da Populacao Atual
-			ControlePopulacaoAtual.getPopulacaoAtual().setPopulacaoMariposas(populacao);
+			ControlePopulacao.getControle().setPopulacaoMariposas(populacao);
+			ControlePopulacao.getControle().setGeracaoAtual(geracao);;
+			
 			clientSocket.atualizarTopico();
 
 			
@@ -181,9 +173,9 @@ private static final Logger log = LoggerFactory.getLogger(SelecaoNatural.class);
 			
 			if (geracao == QTD_MAX_GERACAO_AMBIENTE) {
 				
-				ambiente.setAzul(AleatoriedadeGeneticaUtil.random.nextInt(255));
-				ambiente.setVerde(AleatoriedadeGeneticaUtil.random.nextInt(255));
-				ambiente.setVermelho(AleatoriedadeGeneticaUtil.random.nextInt(255));
+				controleAmbiente.setAzul(AleatoriedadeGeneticaUtil.random.nextInt(255));
+				controleAmbiente.setVerde(AleatoriedadeGeneticaUtil.random.nextInt(255));
+				controleAmbiente.setVermelho(AleatoriedadeGeneticaUtil.random.nextInt(255));
 				
 				novaGeracao = new PopulacaoMariposas(tamanhoPopulacao, tamanhoCromossomo, tamanhoEspacoBusca,
 						geracao, true);

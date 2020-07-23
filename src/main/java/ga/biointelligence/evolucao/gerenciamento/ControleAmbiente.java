@@ -1,39 +1,35 @@
-package ga.biointelligence.evolucao;
-
-import java.io.Serializable;
-
+package ga.biointelligence.evolucao.gerenciamento;
 
 /**
- * Estrutura que presenta as caracteristicas de um Ambiente onde vivem as Mariposas 
+ * Estrutura que presenta as caracteristicas de um ControleAmbiente onde vivem as Mariposas 
  * dentro de um contexto.
  * @author aiello
  *
  */
-public final class Ambiente implements Serializable {
+public final class ControleAmbiente  {
 	
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -1619329571370661501L;
 	private int vermelho;
 	private int verde;
 	private int azul;
 	
-	private static Ambiente ambiente;
+	private static ControleAmbiente controle;
 	
-	private Ambiente() {}
+	private ControleAmbiente() {}
 	
-	public static synchronized Ambiente getAmbienteAtual() {
+	public static synchronized ControleAmbiente getControle() {
 		
-		if (ambiente == null) {
+		if (controle == null) {
 			load();
 		}
 		
-		return  ambiente;
+		return  controle;
 	}
 	
 	private static void load() {
-		ambiente = new Ambiente();
+		controle = new ControleAmbiente();
 	}
 	
 	public int getVermelho() {

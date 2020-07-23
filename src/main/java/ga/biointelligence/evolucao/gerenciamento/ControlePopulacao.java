@@ -12,33 +12,38 @@ import ga.biointelligence.evolucao.PopulacaoMariposas;
  * @author aiello
  *
  */
-public class ControlePopulacaoAtual {
-
-	private List<Mariposa> mariposas;
-	private static ControlePopulacaoAtual atual;
+public class ControlePopulacao {
+	
+	private int geracaoAtual;
+	private List<Mariposa> populacaAtualMariposas;
+	private static ControlePopulacao controle;
 	private final int INTERVALO_INDIVIDUO = 246;
 
-	private ControlePopulacaoAtual() {
-	}
+	private ControlePopulacao() {}
 
-	public static synchronized ControlePopulacaoAtual getPopulacaoAtual() {
+	public static synchronized ControlePopulacao getControle() {
 
-		if (atual == null) {
-			atual = new ControlePopulacaoAtual();
+		if (controle == null) {
+			controle = new ControlePopulacao();
 		}
 
-		return atual;
+		return controle;
 	}
 
-	public List<Mariposa> getMariposas() {
-		return mariposas;
+	public List<Mariposa> getPopulacaoAtualMariosas() {
+	
+		populacaAtualMariposas.sort((m1,m2) -> Integer.valueOf(m1.getRelevancia()).
+				compareTo(Integer.valueOf(m2.getRelevancia())));
+		
+		return populacaAtualMariposas;
 	}
 
 	public void setPopulacaoMariposas(final PopulacaoMariposas populacao) {
 
-		mariposas = new ArrayList<Mariposa>();
+		populacaAtualMariposas = new ArrayList<Mariposa>();
 		Mariposa mariposa = null;
 		int ponteiro = 0;
+		int relevancia = 1;
 	
 		for (int a = 0; a < populacao.getIndividuos().length; a++) {
 
@@ -51,14 +56,24 @@ public class ControlePopulacaoAtual {
 				mariposa.setVermelho(populacao.getIndividuos()[a].getCromossomo().getGenes()[0].getValor());
 				mariposa.setVerde(populacao.getIndividuos()[a].getCromossomo().getGenes()[1].getValor());
 				mariposa.setAzul(populacao.getIndividuos()[a].getCromossomo().getGenes()[2].getValor());
-				mariposas.add(mariposa);
-
+				mariposa.setRelevancia(relevancia);
+				relevancia++;
+				
+				populacaAtualMariposas.add(mariposa);
 			}
 			
 			if (a == ponteiro) {
 				ponteiro+= INTERVALO_INDIVIDUO;
 			}
 		}
+	}
+
+	public int getGeracaoAtual() {
+		return geracaoAtual;
+	}
+
+	public void setGeracaoAtual(int geracaoAtual) {
+		this.geracaoAtual = geracaoAtual;
 	}
 
 }

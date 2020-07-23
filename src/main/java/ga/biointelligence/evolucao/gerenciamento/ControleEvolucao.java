@@ -8,7 +8,7 @@ package ga.biointelligence.evolucao.gerenciamento;
 public final class ControleEvolucao {
 	
 	private Status status;
-
+	
 	public enum Status {
 		ATIVA , INATIVA
 	}

@@ -21,7 +21,7 @@ public class EvolutionOfMoths implements Serializable {
 	
 	private int ambienteVermelho;
 	private int ambienteVerde;
-	private int ambientAzul;
+	private int ambienteAzul;
 	
 	private List<Mariposa> mariposas;
 	
@@ -57,12 +57,12 @@ public class EvolutionOfMoths implements Serializable {
 		this.ambienteVerde = ambienteVerde;
 	}
 
-	public int getAmbientAzul() {
-		return ambientAzul;
+	public int getAmbienteAzul() {
+		return ambienteAzul;
 	}
 
-	public void setAmbientAzul(int ambientAzul) {
-		this.ambientAzul = ambientAzul;
+	public void setAmbienteAzul(int ambienteAzul) {
+		this.ambienteAzul = ambienteAzul;
 	}
 
 }

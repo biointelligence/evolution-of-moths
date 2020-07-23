@@ -1,4 +1,4 @@
-package logicaevolutiva.ga.virtual.population.websocket.client;
+package ga.biointelligence.virtualpopulation.websocket.client;
 
 import java.lang.reflect.Type;
 import java.util.Date;
@@ -14,6 +14,7 @@ import ga.biointelligence.evolucao.gerenciamento.EvolutionOfMoths;
 
 /**
  * Classe Handler reponsavel em enviar mensagens ao WebSocket Evolution.
+ * 
  * @author aiello
  *
  */
@@ -25,7 +26,7 @@ public class EvolutionSessionHandler extends StompSessionHandlerAdapter {
 	public void afterConnected(StompSession session, StompHeaders connectedHeaders) {
 
 		log.info("[Evolution Socket] - Nova sessao iniciada: " + session.getSessionId() + " .");
-		
+
 		session.subscribe("/topic/evolutionofmoths", this);
 		log.info("[Evolution Socket] - Subscricao em /topic/evolutionofmoths .");
 
@@ -46,17 +47,42 @@ public class EvolutionSessionHandler extends StompSessionHandlerAdapter {
 
 	@Override
 	public void handleFrame(StompHeaders headers, Object payload) {
-		EvolutionOfMoths evolutionOfMoths = (EvolutionOfMoths) payload;
+
+		/*final EvolutionOfMoths evolutionOfMoths = (EvolutionOfMoths) payload;
+		final StringBuilder print = new StringBuilder();
 		
-		log.info("---------------------- Gerecao " + evolutionOfMoths.getGeracaoAtual() + "-------------------");
-		
+		print.append("\n");
+		print.append("---------------------- Geracao -------------------");
+		print.append("\n");
+		print.append(String.valueOf(evolutionOfMoths.getGeracaoAtual()));
+		print.append("\n");
+
+		print.append("---------------------- Ambiente -------------------");
+
+		print.append("\n");
+		print.append("\n");
+
+
+		print.append(String.valueOf(" Ambiente Vermelho " + evolutionOfMoths.getAmbienteVermelho())
+				+ String.valueOf(" Ambiente Verde " + evolutionOfMoths.getAmbienteVerde())
+				+ String.valueOf(" Ambiente Azul " + evolutionOfMoths.getAmbienteAzul()));
+
+		print.append("\n");
+		print.append("\n");
+
+
+		print.append("---------------------- Mariposas -------------------");
+		print.append("\n");
+		print.append("\n");
+
 		evolutionOfMoths.getMariposas().forEach(m -> {
-			
-			log.info(String.valueOf(" Vermelho " + m.getVermelho()) +
-					 String.valueOf(" Verde "    + m.getVerde())  +
-			         String.valueOf(" Azul "     + m.getAzul()));
+
+			print.append(String.valueOf(" Vermelho " + m.getVermelho()) + String.valueOf(" Verde " + m.getVerde())
+					+ String.valueOf(" Azul " + m.getAzul()) + "\n");
 		});
 		
+		log.info(print.toString()); */
+
 	}
 
 }

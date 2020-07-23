@@ -1,5 +1,7 @@
 package ga.biointelligence.evolucao;
 
+import ga.biointelligence.evolucao.gerenciamento.ControleAmbiente;
+
 /**
  * Classe que define a populacao para solucao do problema referente a
  * identificacao dos melhores produtos.
@@ -50,10 +52,10 @@ public class PopulacaoMariposas extends Populacao {
 	public double avalia(Cromossomo cromossomo) {
 
 		
-		//Ambiente
-		int valorAmbienteVermelho = Ambiente.getAmbienteAtual().getVermelho();
-		int valorAmbienteVerde = Ambiente.getAmbienteAtual().getVerde();
-		int valorAmbienteAzul = Ambiente.getAmbienteAtual().getAzul();
+		//ControleAmbiente
+		int valorAmbienteVermelho = ControleAmbiente.getControle().getVermelho();
+		int valorAmbienteVerde = ControleAmbiente.getControle().getVerde();
+		int valorAmbienteAzul = ControleAmbiente.getControle().getAzul();
 		
 		//Valores dos Genes
 		int valorGeneVermelho = cromossomo.getGenes()[0].getValor();

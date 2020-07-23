@@ -1,6 +1,5 @@
-package logicaevolutiva.ga.virtual.population.controller;
+package ga.biointelligence.virtualpopulation.controller;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -12,9 +11,9 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.stereotype.Controller;
 
 import ga.biointelligence.evolucao.Mariposa;
-import ga.biointelligence.evolucao.gerenciamento.ControlePopulacaoAtual;
+import ga.biointelligence.evolucao.gerenciamento.ControleAmbiente;
+import ga.biointelligence.evolucao.gerenciamento.ControlePopulacao;
 import ga.biointelligence.evolucao.gerenciamento.EvolutionOfMoths;
-import logicaevolutiva.ga.virtual.population.config.WebSocketConfig;
 
 @Controller
 @EnableScheduling
@@ -29,9 +28,13 @@ public class EvolutionController {
 
 		final EvolutionOfMoths evolutionOfMoths = new EvolutionOfMoths();
 
-		final List<Mariposa> mariposas = ControlePopulacaoAtual.getPopulacaoAtual().getMariposas();
+		final List<Mariposa> mariposas = ControlePopulacao.getControle().getPopulacaoAtualMariosas();
 		evolutionOfMoths.setMariposas(mariposas);
-		evolutionOfMoths.setGeracaoAtual(2000);
+		evolutionOfMoths.setGeracaoAtual(ControlePopulacao.getControle().getGeracaoAtual());
+		
+		evolutionOfMoths.setAmbienteVermelho(ControleAmbiente.getControle().getVermelho());
+		evolutionOfMoths.setAmbienteVerde(ControleAmbiente.getControle().getVerde());
+		evolutionOfMoths.setAmbienteAzul(ControleAmbiente.getControle().getAzul());
 
 
 		return evolutionOfMoths;
