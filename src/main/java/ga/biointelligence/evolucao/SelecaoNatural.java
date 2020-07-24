@@ -181,6 +181,7 @@ private static final Logger log = LoggerFactory.getLogger(SelecaoNatural.class);
 						geracao, true);
 				
 				this.melhorCromossomo.setFitness(0);
+				geracao = 0;
 			}
 			
 			//Avalia a proeficiencia de toda a nova populacao.
