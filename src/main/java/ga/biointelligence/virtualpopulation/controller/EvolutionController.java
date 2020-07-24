@@ -24,6 +24,7 @@ public class EvolutionController {
 	// Escutando as mensagens do topico evolutionmoths.
 	@MessageMapping("/evolution")
 	@SendTo("/topic/evolutionofmoths")
+	@CrossOrigin(origins = "*")
 	public EvolutionOfMoths getMariposa(final Date dataMensagem) throws Exception {
 
 		final EvolutionOfMoths evolutionOfMoths = new EvolutionOfMoths();
