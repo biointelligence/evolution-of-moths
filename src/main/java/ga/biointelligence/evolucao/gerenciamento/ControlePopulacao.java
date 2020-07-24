@@ -47,16 +47,17 @@ public class ControlePopulacao {
 	
 		for (int a = 0; a < populacao.getIndividuos().length; a++) {
 
-			if (a == 0 || 
-					a == ponteiro ||
-					a == populacao.getIndividuos().length - 1) {
+			if (a == 0 ||
+				a == ponteiro ||
+				a == populacao.getIndividuos().length - 1
+			) {
 
 				mariposa = new Mariposa();
 
 				mariposa.setVermelho(populacao.getIndividuos()[a].getCromossomo().getGenes()[0].getValor());
 				mariposa.setVerde(populacao.getIndividuos()[a].getCromossomo().getGenes()[1].getValor());
 				mariposa.setAzul(populacao.getIndividuos()[a].getCromossomo().getGenes()[2].getValor());
-				mariposa.setRelevancia(relevancia);
+				mariposa.setRelevancia(populacao.getIndividuos().length - a);
 				relevancia++;
 				
 				populacaAtualMariposas.add(mariposa);

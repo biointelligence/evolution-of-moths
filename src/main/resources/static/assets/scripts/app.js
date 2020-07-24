@@ -33,7 +33,7 @@ function connect() {
                 };
                 generalCount = (timerNextGeneration * generationPerEnvironment);
                 if (response.geracaoAtual !== 1) {
-                    generalCount -= timerNextGeneration * response.geracaoAtual;
+                    generalCount -= timerNextGeneration * (response.geracaoAtual - 1);
                 }
                 setEnvironmentColor();
             }
