@@ -38,7 +38,7 @@ private static final Logger log = LoggerFactory.getLogger(SelecaoNatural.class);
 	//Em que geracao a melhor solucao foi encontrada.
 	private int melhorGeracao;
 	
-	private final int INTERVALO_ENTRE_GERACOES = 6000;
+	private final int INTERVALO_ENTRE_GERACOES = 4000;
 	private final int QTD_MAX_GERACAO_AMBIENTE = 40;
 	
 	/**

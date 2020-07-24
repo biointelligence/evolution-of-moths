@@ -1,5 +1,5 @@
 var stompClient = null;
-var timerNextGeneration = 6;
+var timerNextGeneration = 4;
 var generationPerEnvironment = 40;
 var lastEnvironment = { red: null, green: null, blue: null };
 var environment = { red: 0, green: 0, blue: 0 };
@@ -31,7 +31,7 @@ function connect() {
                     green: response.ambienteVerde,
                     blue: response.ambienteAzul
                 };
-                generalCount = (timerNextGeneration * generationPerEnvironment) + timerNextGeneration;
+                generalCount = (timerNextGeneration * generationPerEnvironment);
                 if (response.geracaoAtual !== 1) {
                     generalCount -= timerNextGeneration * response.geracaoAtual;
                 }
