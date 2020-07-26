@@ -1,23 +1,18 @@
-var stompClient = null;
-var timerNextGeneration = 4;
-var generationPerEnvironment = 40;
-var lastEnvironment = { red: null, green: null, blue: null };
-var environment = { red: 0, green: 0, blue: 0 };
-var generalCount = 0;
+let stompClient = null;
+const timerNextGeneration = 4;
+const generationPerEnvironment = 40;
+let lastEnvironment = { red: null, green: null, blue: null };
+let environment = { red: 0, green: 0, blue: 0 };
+let generalCount = 0;
+let isConnect = true;
 
 function connect() {
-    var socket = new SockJS(window.location.href + 'evolution');
+    const socket = new SockJS(window.location.href + 'evolution');
     stompClient = Stomp.over(socket);
     stompClient.connect({}, function (frame) {
         stompClient.subscribe('/topic/evolution-of-moths', function (evolutionOfMoths) {
-            var response = JSON.parse(evolutionOfMoths.body);
+            const response = JSON.parse(evolutionOfMoths.body);
             removeLoader();
-            /*console.log(response);
-            console.log(response.currentGeneration);
-            console.log(response.redEnvironment);
-            console.log(response.greenEnvironment);
-            console.log(response.blueEnvironment);
-            console.log(response.moths);*/
 
             setTimeNextGeneration();
             setCurrentEnvironment(response.currentGeneration);
@@ -46,10 +41,18 @@ function connect() {
 }
 
 function disconnect() {
-    if (stompClient !== null) {
+    const btn = document.getElementById("button-connect");
+    if (stompClient !== null && isConnect) {
+        isConnect = false;
         stompClient.disconnect();
+        btn.style.backgroundColor = "#43B581";
+        btn.textContent = "Connect";
+    } else if (!isConnect) {
+        isConnect = true;
+        connect();
+        btn.style.backgroundColor = "#C62828";
+        btn.textContent = "Disconnect";
     }
-    console.log("Disconnected");
 }
 
 function scrollToContent() {
@@ -71,11 +74,11 @@ function setCurrentEnvironment(currentEnvironment) {
 }
 
 function setTimeNextGeneration() {
-    var count = timerNextGeneration; // + 1
-    var timeNextGenerationElement = document.getElementById("timeNextGeneration");
+    let count = timerNextGeneration; // + 1
+    const timeNextGenerationElement = document.getElementById("timeNextGeneration");
     timeNextGenerationElement.textContent = count + "s";
 
-    var timer = setInterval(function() {
+    const timer = setInterval(function () {
         count--;
         timeNextGenerationElement.textContent = count + "s";
 
@@ -89,7 +92,7 @@ function setTimeNextEnvironment() {
     var timeNextEnvironmentElement = document.getElementById("timeNextEnvironment");
     timeNextEnvironmentElement.textContent = generalCount + "s";
 
-    var timer = setInterval(function() {
+    const timer = setInterval(function () {
         generalCount--;
         timeNextEnvironmentElement.textContent = generalCount + "s";
 
@@ -100,19 +103,19 @@ function setTimeNextEnvironment() {
 }
 
 function setEnvironmentColor() {
-    var grid = document.getElementById("grid");
+    const grid = document.getElementById("grid");
     grid.style.backgroundColor = "rgb(" + environment.red + "," + environment.green + "," + environment.blue + ")";
 
-    var currentEnvironmentColor = document.getElementById("currentEnvironmentColor");
+    const currentEnvironmentColor = document.getElementById("currentEnvironmentColor");
     currentEnvironmentColor.style.backgroundColor = "rgb(" + environment.red + "," + environment.green + "," + environment.blue + ")";
 
-    var LastEnvironmentContainer = document.getElementById("LastEnvironmentContainer");
+    const LastEnvironmentContainer = document.getElementById("LastEnvironmentContainer");
     if (
         lastEnvironment.red !== null ||
         lastEnvironment.green !== null ||
         lastEnvironment.blue !== null
     ) {
-        var lastEnvironmentColor = document.getElementById("lastEnvironmentColor");
+        const lastEnvironmentColor = document.getElementById("lastEnvironmentColor");
         lastEnvironmentColor.style.backgroundColor = "rgb(" + lastEnvironment.red + "," + lastEnvironment.green + "," + lastEnvironment.blue + ")";
         LastEnvironmentContainer.style.display = "flex";
     } else {
@@ -123,7 +126,7 @@ function setEnvironmentColor() {
 }
 
 function setMothColor(mothsColors) {
-    var moths = document.querySelectorAll("div.hexagon");
+    const moths = document.querySelectorAll("div.hexagon");
 
     moths.forEach(function (moth, index) {
         moth.style.backgroundColor = "rgb(" + mothsColors[index].red + "," + mothsColors[index].green + "," + mothsColors[index].blue + ")"
