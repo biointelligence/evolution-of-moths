@@ -39,12 +39,17 @@ p {
 }
 
 footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
     position: relative;
-    display: block;
     width: 100%;
-    min-height: 25px;
+    min-height: 32px;
     margin: 3rem auto 0;
     background-color: #2F3136;
+    color: #FFFFFF;
+    cursor: default;
 }
 
 .w-auto {
@@ -146,7 +151,7 @@ footer {
     position: absolute;
     width: 24px;
     height: 24px;
-    background: #000000;
+    background: #2F3136;
 }
 
 .square.first {
@@ -179,7 +184,7 @@ footer {
     font-size: 24px;
     font-weight: 900;
     line-height: 16px;
-    color: #000000;
+    color: #2F3136;
     display: block;
     margin: 10px auto;
     padding: 3px;
@@ -305,6 +310,9 @@ footer {
 #main {
     position: relative;
     display: none;
+}
+
+#container-main {
     width: 1100px;
     min-height: 100%;
     margin: 0 auto 0; /* 3rem auto 0 */

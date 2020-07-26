@@ -3,27 +3,29 @@
   <head>
     <meta charset="UTF-8">
     <title>Evolution of Moths | Bio Intelligence</title>
-    <link href="assets/styles/styles.css" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+
+    <link rel="icon" href="favicon.ico">
+    <link rel="stylesheet" href="assets/styles/styles.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap">
   
     <script src="/webjars/sockjs-client/sockjs.min.js"></script>
     <script src="/webjars/stomp-websocket/stomp.min.js"></script>
     <script src="assets/scripts/app.js"></script>
   </head>
   <body onload="connect()">
-    <main>
-      <div id="loader" class="h-100 w-100 d-flex align-items-center justify-content-center">
-        <div class="load-group">
-          <div class="big-square">
-            <div class="square first"></div>
-            <div class="square second"></div>
-            <div class="square third"></div>
-            <div class="square fourth"></div>
-          </div>
-          <div class="load-text">loading</div>
+    <div id="loader" class="h-100 w-100 d-flex align-items-center justify-content-center">
+      <div class="load-group">
+        <div class="big-square">
+          <div class="square first"></div>
+          <div class="square second"></div>
+          <div class="square third"></div>
+          <div class="square fourth"></div>
         </div>
+        <div class="load-text">loading</div>
       </div>
-      <div id="main">
+    </div>
+    <main id="main">
+      <div id="container-main">
         <div class="w-100 section d-flex align-items-center">
           <div id="grid" class="clear">
             <div class="hexagon-group" style="margin-right: -10px;">
@@ -170,7 +172,9 @@
           </div>
         </div>
       </div>
+      <footer>
+        Made with &#x2764; by <a href="https://www.linkedin.com/in/carlos-aiello-ti/">Carlos Aiello</a> e <a href="https://www.linkedin.com/in/felipe-cortes/">Felipe Côrtes</a>
+      </footer>
     </main>
-    <!--<footer></footer>-->
   </body>
 </html>

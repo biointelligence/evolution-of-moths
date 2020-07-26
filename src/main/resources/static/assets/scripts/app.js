@@ -7,10 +7,11 @@ let generalCount = 0;
 let isConnect = true;
 
 function connect() {
-    const socket = new SockJS(window.location.href + 'evolution');
+    console.log(window.location.href + 'evolution');
+    const socket = new SockJS(window.location.href + "evolution");
     stompClient = Stomp.over(socket);
     stompClient.connect({}, function (frame) {
-        stompClient.subscribe('/topic/evolution-of-moths', function (evolutionOfMoths) {
+        stompClient.subscribe("/topic/evolution-of-moths", function (evolutionOfMoths) {
             const response = JSON.parse(evolutionOfMoths.body);
             removeLoader();
 
