@@ -11,10 +11,10 @@ import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.stereotype.Controller;
 
-import ga.biointelligence.evolucao.Mariposa;
-import ga.biointelligence.evolucao.gerenciamento.ControleAmbiente;
-import ga.biointelligence.evolucao.gerenciamento.ControlePopulacao;
-import ga.biointelligence.evolucao.gerenciamento.EvolutionOfMoths;
+import ga.biointelligence.evolution.Moths;
+import ga.biointelligence.evolution.management.EnvironmentControl;
+import ga.biointelligence.evolution.management.PopulationControl;
+import ga.biointelligence.evolution.management.EvolutionOfMoths;
 
 @Controller
 @EnableScheduling
@@ -22,22 +22,20 @@ public class EvolutionController {
 
 	private static final Logger log = LoggerFactory.getLogger(EvolutionController.class);
 
-	// Escutando as mensagens do topico evolutionmoths.
+	// Listening to the messages of the topic evolution of months.
 	@MessageMapping("/evolution")
-	@SendTo("/topic/evolutionofmoths")
+	@SendTo("/topic/evolution-of-moths")
 	@CrossOrigin(origins = "*")
-	public EvolutionOfMoths getMariposa(final Date dataMensagem) throws Exception {
-
+	public EvolutionOfMoths getMoths(final Date dataMessage) throws Exception {
 		final EvolutionOfMoths evolutionOfMoths = new EvolutionOfMoths();
 
-		final List<Mariposa> mariposas = ControlePopulacao.getControle().getPopulacaoAtualMariosas();
-		evolutionOfMoths.setMariposas(mariposas);
-		evolutionOfMoths.setGeracaoAtual(ControlePopulacao.getControle().getGeracaoAtual());
+		final List<Moths> moths = PopulationControl.getControl().getCurrentMothPopulation();
+		evolutionOfMoths.setMoths(moths);
+		evolutionOfMoths.setCurrentGeneration(PopulationControl.getControl().getCurrentGeneration());
 		
-		evolutionOfMoths.setAmbienteVermelho(ControleAmbiente.getControle().getVermelho());
-		evolutionOfMoths.setAmbienteVerde(ControleAmbiente.getControle().getVerde());
-		evolutionOfMoths.setAmbienteAzul(ControleAmbiente.getControle().getAzul());
-
+		evolutionOfMoths.setRedEnvironment(EnvironmentControl.getControl().getRed());
+		evolutionOfMoths.setGreenEnvironment(EnvironmentControl.getControl().getGreen());
+		evolutionOfMoths.setBlueEnvironment(EnvironmentControl.getControl().getBlue());
 
 		return evolutionOfMoths;
 	}

@@ -6,40 +6,42 @@ var environment = { red: 0, green: 0, blue: 0 };
 var generalCount = 0;
 
 function connect() {
-    var socket = new SockJS('localhost:2000/evolution');
+    console.log(document.URL);
+    console.log(window.location.href);
+    var socket = new SockJS(window.location.href + 'evolution');
     stompClient = Stomp.over(socket);
     stompClient.connect({}, function (frame) {
-        stompClient.subscribe('/topic/evolutionofmoths', function (evolutionOfMoths) {
+        stompClient.subscribe('/topic/evolution-of-moths', function (evolutionOfMoths) {
             var response = JSON.parse(evolutionOfMoths.body);
-            console.log(response);
-            console.log(response.geracaoAtual);
-            console.log(response.ambienteVermelho);
-            console.log(response.ambienteVerde);
-            console.log(response.ambienteAzul);
-            console.log(response.mariposas);
+            /*console.log(response);
+            console.log(response.currentGeneration);
+            console.log(response.redEnvironment);
+            console.log(response.greenEnvironment);
+            console.log(response.blueEnvironment);
+            console.log(response.moths);*/
 
             setTimeNextGeneration();
-            setCurrentEnvironment(response.geracaoAtual);
+            setCurrentEnvironment(response.currentGeneration);
 
             if (
-                environment.red !== response.ambienteVermelho ||
-                environment.green !== response.ambienteVerde ||
-                environment.blue !== response.ambienteAzul
+                environment.red !== response.redEnvironment ||
+                environment.green !== response.greenEnvironment ||
+                environment.blue !== response.blueEnvironment
             ) {
                 environment = {
-                    red: response.ambienteVermelho,
-                    green: response.ambienteVerde,
-                    blue: response.ambienteAzul
+                    red: response.redEnvironment,
+                    green: response.greenEnvironment,
+                    blue: response.blueEnvironment
                 };
                 generalCount = (timerNextGeneration * generationPerEnvironment);
-                if (response.geracaoAtual !== 1) {
-                    generalCount -= timerNextGeneration * (response.geracaoAtual - 1);
+                if (response.currentGeneration !== 1) {
+                    generalCount -= timerNextGeneration * (response.currentGeneration - 1);
                 }
                 setEnvironmentColor();
             }
 
             setTimeNextEnvironment();
-            setMothColor(response.mariposas);
+            setMothColor(response.moths);
         });
     });
 }
@@ -111,6 +113,6 @@ function setMothColor(mothsColors) {
     var moths = document.querySelectorAll("div.hexagon");
 
     moths.forEach(function (moth, index) {
-        moth.style.backgroundColor = "rgb(" + mothsColors[index].vermelho + "," + mothsColors[index].verde + "," + mothsColors[index].azul + ")"
+        moth.style.backgroundColor = "rgb(" + mothsColors[index].red + "," + mothsColors[index].green + "," + mothsColors[index].blue + ")"
     });
 }

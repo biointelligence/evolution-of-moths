@@ -1,7 +1,5 @@
 package ga.biointelligence.virtualpopulation.config;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.messaging.simp.config.MessageBrokerRegistry;
 import org.springframework.web.socket.config.annotation.EnableWebSocketMessageBroker;
@@ -10,8 +8,6 @@ import org.springframework.web.socket.config.annotation.WebSocketMessageBrokerCo
 import org.springframework.web.socket.server.RequestUpgradeStrategy;
 import org.springframework.web.socket.server.standard.TomcatRequestUpgradeStrategy;
 import org.springframework.web.socket.server.support.DefaultHandshakeHandler;
-
-import ga.biointelligence.virtualpopulation.websocket.client.EvolutionSessionHandler;
 
 @Configuration
 @EnableWebSocketMessageBroker
@@ -24,11 +20,10 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
 	}
 
 	/**
-	 * Registrando o WebSocket evolution.	
+	 * Registering the WebSocket evolution.
 	 */
 	@Override
 	public void registerStompEndpoints(StompEndpointRegistry registry) {
-		
 		RequestUpgradeStrategy upgradeStrategy = new TomcatRequestUpgradeStrategy();
 		
 		registry.addEndpoint("/evolution")
@@ -37,7 +32,6 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
 		registry.addEndpoint("/evolution")
 		        .setHandshakeHandler(new DefaultHandshakeHandler(upgradeStrategy))
 		        .setAllowedOrigins("*");
-		  
 	}
 
 }	

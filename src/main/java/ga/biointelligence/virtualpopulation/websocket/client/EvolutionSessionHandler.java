@@ -10,13 +10,11 @@ import org.springframework.messaging.simp.stomp.StompHeaders;
 import org.springframework.messaging.simp.stomp.StompSession;
 import org.springframework.messaging.simp.stomp.StompSessionHandlerAdapter;
 
-import ga.biointelligence.evolucao.gerenciamento.EvolutionOfMoths;
+import ga.biointelligence.evolution.management.EvolutionOfMoths;
 
 /**
- * Classe Handler reponsavel em enviar mensagens ao WebSocket Evolution.
- * 
+ * Handler class responsible for sending messages to WebSocket Evolution.
  * @author aiello
- *
  */
 public class EvolutionSessionHandler extends StompSessionHandlerAdapter {
 
@@ -24,20 +22,19 @@ public class EvolutionSessionHandler extends StompSessionHandlerAdapter {
 
 	@Override
 	public void afterConnected(StompSession session, StompHeaders connectedHeaders) {
+		log.info("[Evolution Socket] - New session started: " + session.getSessionId() + " .");
 
-		log.info("[Evolution Socket] - Nova sessao iniciada: " + session.getSessionId() + " .");
-
-		session.subscribe("/topic/evolutionofmoths", this);
-		log.info("[Evolution Socket] - Subscricao em /topic/evolutionofmoths .");
+		session.subscribe("/topic/evolution-of-moths", this);
+		log.info("[Evolution Socket] - Subscription on /topic/evolution-of-moths .");
 
 		session.send("/app/evolution", new Date());
-		log.info("[Evolution Socket] - Mensagem enviada ao servidor WebSocket.");
+		log.info("[Evolution Socket] - Message sent to the WebSocket server.");
 	}
 
 	@Override
-	public void handleException(StompSession session, StompCommand command, StompHeaders headers, byte[] payload,
-			Throwable exception) {
-		log.error("[Evolution Socket] - Ocorreu uma falha na comunicacao com o Websocket.", exception);
+	public void handleException(StompSession session, StompCommand command,
+								StompHeaders headers, byte[] payload, Throwable exception) {
+		log.error("[Evolution Socket] - Message sent to the WebSocket server.", exception);
 	}
 
 	@Override

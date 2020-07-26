@@ -3,17 +3,19 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
+
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>2.3.0.RELEASE</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
+
 	<groupId>logicaevolutiva.ga</groupId>
-	<artifactId>virtual-population</artifactId>
+	<artifactId>evolution-of-moths</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>virtual-population</name>
-	<description>Monitoramento de uma população de seres virtuais que adaptam ao ambiente que convivem.</description>
+	<name>evolution-of-moths</name>
+	<description>Monitoring a population of virtual beings that adapt to the environment in which they live.</description>
 
 	<properties>
 		<java.version>1.8</java.version>
@@ -77,5 +79,4 @@
 			</plugin>
 		</plugins>
 	</build>
-
 </project>
