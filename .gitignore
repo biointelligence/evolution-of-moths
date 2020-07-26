@@ -3,6 +3,8 @@ target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**
 !**/src/test/**
+.attach_pid3770
+.attach_pid21794
 
 ### STS ###
 .apt_generated
