@@ -12,6 +12,17 @@
   </head>
   <body onload="connect()">
     <main>
+      <div id="loader" class="h-100 w-100 d-flex align-items-center justify-content-center">
+        <div class="load-group">
+          <div class="big-square">
+            <div class="square first"></div>
+            <div class="square second"></div>
+            <div class="square third"></div>
+            <div class="square fourth"></div>
+          </div>
+          <div class="load-text">loading</div>
+        </div>
+      </div>
       <div id="main">
         <div class="w-100 section d-flex align-items-center">
           <div id="grid" class="clear">
@@ -136,7 +147,7 @@
                 </div>
               </div>
             </div>
-            <div class="container-info-bottom d-flex w-100 align-items-center justify-content-center">
+            <div onclick="scrollToContent()" class="container-info-bottom d-flex w-100 align-items-center justify-content-center">
               <div>
                 <img class="more-info-icon" src="assets/img/arrow-down-outline.svg" alt="Down arrow" />
               </div>
@@ -144,7 +155,7 @@
             </div>
           </div>
         </div>
-        <div class="section d-flex flex-column justify-content-center">
+        <div id="content" class="section d-flex flex-column justify-content-center">
           <h2>Inspiration</h2>
           <div class="mb-3">
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>

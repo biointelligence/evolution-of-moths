@@ -6,13 +6,12 @@ var environment = { red: 0, green: 0, blue: 0 };
 var generalCount = 0;
 
 function connect() {
-    console.log(document.URL);
-    console.log(window.location.href);
     var socket = new SockJS(window.location.href + 'evolution');
     stompClient = Stomp.over(socket);
     stompClient.connect({}, function (frame) {
         stompClient.subscribe('/topic/evolution-of-moths', function (evolutionOfMoths) {
             var response = JSON.parse(evolutionOfMoths.body);
+            removeLoader();
             /*console.log(response);
             console.log(response.currentGeneration);
             console.log(response.redEnvironment);
@@ -51,6 +50,20 @@ function disconnect() {
         stompClient.disconnect();
     }
     console.log("Disconnected");
+}
+
+function scrollToContent() {
+    window.scrollTo(0, document.getElementById("content").offsetTop);
+}
+
+function removeLoader() {
+    const loader = document.getElementById("loader");
+    loader.style.opacity = "0";
+    setTimeout(function () {
+        loader.style.display = "none";
+    }, 200)
+
+    document.getElementById("main").classList.add("transition-main");
 }
 
 function setCurrentEnvironment(currentEnvironment) {
