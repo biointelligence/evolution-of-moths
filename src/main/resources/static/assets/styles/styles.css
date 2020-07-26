@@ -30,7 +30,7 @@ main {
 
 h2 {
     font-size: 3rem;
-    margin-bottom: 1.25rem;
+    margin: 1.25rem 0;
 }
 
 p {
@@ -338,7 +338,6 @@ footer {
 
 .section {
     min-height: 100vh;
-    scroll-snap-align: center;
 }
 
 #grid {
@@ -522,3 +521,11 @@ footer {
 }
 
 /* Body */
+
+.footer-link {
+    margin: 0 .25rem;
+}
+
+.footer-link:active, .footer-link:visited {
+    color: #FFFFFF;
+}

@@ -1,6 +1,6 @@
-let stompClient = null;
 const timerNextGeneration = 4;
 const generationPerEnvironment = 40;
+let stompClient = null;
 let lastEnvironment = { red: null, green: null, blue: null };
 let environment = { red: 0, green: 0, blue: 0 };
 let generalCount = 0;
@@ -13,6 +13,7 @@ function connect() {
     stompClient.connect({}, function (frame) {
         stompClient.subscribe("/topic/evolution-of-moths", function (evolutionOfMoths) {
             const response = JSON.parse(evolutionOfMoths.body);
+            console.log(response);
             removeLoader();
 
             setTimeNextGeneration();
