@@ -5,6 +5,9 @@ target/
 !**/src/test/**
 .attach_pid3770
 .attach_pid21794
+.mvn/
+mvnw
+mvnw.cmd
 
 ### STS ###
 .apt_generated
