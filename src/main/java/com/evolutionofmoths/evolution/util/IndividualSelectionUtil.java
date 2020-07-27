@@ -1,7 +1,7 @@
-package ga.biointelligence.evolution.util;
+package com.evolutionofmoths.evolution.util;
 
-import ga.biointelligence.evolution.Individual;
-import ga.biointelligence.evolution.Population;
+import com.evolutionofmoths.evolution.Individual;
+import com.evolutionofmoths.evolution.Population;
 
 public class IndividualSelectionUtil {
 	

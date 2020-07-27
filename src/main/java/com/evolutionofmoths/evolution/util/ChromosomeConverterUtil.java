@@ -1,6 +1,6 @@
-package ga.biointelligence.evolution.util;
+package com.evolutionofmoths.evolution.util;
 
-import ga.biointelligence.evolution.Gene;
+import com.evolutionofmoths.evolution.Gene;
 
 /**
  * Utility class that provides chromosome conversion operations.

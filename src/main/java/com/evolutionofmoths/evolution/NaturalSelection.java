@@ -1,14 +1,14 @@
-package ga.biointelligence.evolution;
+package com.evolutionofmoths.evolution;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import ga.biointelligence.evolution.management.EnvironmentControl;
-import ga.biointelligence.evolution.management.EvolutionControl;
-import ga.biointelligence.evolution.management.PopulationControl;
-import ga.biointelligence.evolution.util.GeneticRandomnessUtil;
-import ga.biointelligence.evolution.util.IndividualSelectionUtil;
-import ga.biointelligence.virtualpopulation.websocket.client.EvolutionClientSocket;
+import com.evolutionofmoths.evolution.management.EnvironmentControl;
+import com.evolutionofmoths.evolution.management.EvolutionControl;
+import com.evolutionofmoths.evolution.management.PopulationControl;
+import com.evolutionofmoths.evolution.util.GeneticRandomnessUtil;
+import com.evolutionofmoths.evolution.util.IndividualSelectionUtil;
+import com.evolutionofmoths.socket.websocket.client.EvolutionClientSocket;
 
 /**
  * Class of definition of natural selection mechanisms
@@ -162,7 +162,7 @@ public class NaturalSelection {
 				environmentControl.setRed(GeneticRandomnessUtil.random.nextInt(255));
 				environmentControl.setGreen(GeneticRandomnessUtil.random.nextInt(255));
 				environmentControl.setBlue(GeneticRandomnessUtil.random.nextInt(255));
-
+				
 				newGeneration = new MothPopulation(lengthPopulation, lengthChromosome,
 						lengthSpaceSearch, generation, true);
 				

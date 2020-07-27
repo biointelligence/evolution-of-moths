@@ -1,6 +1,6 @@
-package ga.biointelligence.evolution;
+package com.evolutionofmoths.evolution;
 
-import ga.biointelligence.evolution.util.GeneticRandomnessUtil;
+import com.evolutionofmoths.evolution.util.GeneticRandomnessUtil;
 
 /**
  * Class whose function is to define the structure of an Individual.

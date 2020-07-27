@@ -1,4 +1,4 @@
-package ga.biointelligence.evolution.util;
+package com.evolutionofmoths.evolution.util;
 
 import java.util.Date;
 import java.util.Random;

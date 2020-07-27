@@ -1,4 +1,4 @@
-package ga.biointelligence.virtualpopulation.websocket.client;
+package com.evolutionofmoths.socket.websocket.client;
 
 import java.net.InetAddress;
 

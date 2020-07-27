@@ -1,4 +1,4 @@
-package ga.biointelligence.virtualpopulation.config;
+package com.evolutionofmoths.socket.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.messaging.simp.config.MessageBrokerRegistry;

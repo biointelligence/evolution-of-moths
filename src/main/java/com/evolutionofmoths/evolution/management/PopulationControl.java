@@ -1,10 +1,10 @@
-package ga.biointelligence.evolution.management;
+package com.evolutionofmoths.evolution.management;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import ga.biointelligence.evolution.Moths;
-import ga.biointelligence.evolution.MothPopulation;
+import com.evolutionofmoths.evolution.MothPopulation;
+import com.evolutionofmoths.evolution.Moths;
 
 /**
  * Class which manage infos of moth population.
@@ -37,7 +37,6 @@ public class PopulationControl {
 		currentMothPopulation = new ArrayList<Moths>();
 		Moths moths = null;
 		int pointer = 0;
-		int relevance = 1;
 
 		for (int a = 0; a < population.getIndividuals().length; a++) {
 			if (a == 0 ||
@@ -50,7 +49,6 @@ public class PopulationControl {
 				moths.setGreen(population.getIndividuals()[a].getChromosome().getGenes()[1].getValue());
 				moths.setBlue(population.getIndividuals()[a].getChromosome().getGenes()[2].getValue());
 				moths.setRelevance(population.getIndividuals().length - a);
-				relevance++;
 
 				currentMothPopulation.add(moths);
 			}

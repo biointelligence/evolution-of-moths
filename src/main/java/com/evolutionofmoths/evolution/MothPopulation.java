@@ -1,6 +1,6 @@
-package ga.biointelligence.evolution;
+package com.evolutionofmoths.evolution;
 
-import ga.biointelligence.evolution.management.EnvironmentControl;
+import com.evolutionofmoths.evolution.management.EnvironmentControl;
 
 /**
  * Class that defines the population to solve the problem

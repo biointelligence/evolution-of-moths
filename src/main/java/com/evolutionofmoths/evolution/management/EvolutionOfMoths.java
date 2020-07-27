@@ -1,9 +1,9 @@
-package ga.biointelligence.evolution.management;
+package com.evolutionofmoths.evolution.management;
 
 import java.io.Serializable;
 import java.util.List;
 
-import ga.biointelligence.evolution.Moths;
+import com.evolutionofmoths.evolution.Moths;
 
 /**
  * Class that aims to consolidate and inform the relevant

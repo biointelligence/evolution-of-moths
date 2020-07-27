@@ -1,4 +1,4 @@
-package ga.biointelligence.evolution.management;
+package com.evolutionofmoths.evolution.management;
 
 /**
  * Class which management the evolution control.

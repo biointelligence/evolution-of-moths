@@ -1,4 +1,4 @@
-package ga.biointelligence.evolution;
+package com.evolutionofmoths.evolution;
 
 /**
  * Class whose function is to define the mechanics of a Population.

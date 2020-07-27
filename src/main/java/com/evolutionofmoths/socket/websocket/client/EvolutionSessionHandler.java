@@ -1,4 +1,4 @@
-package ga.biointelligence.virtualpopulation.websocket.client;
+package com.evolutionofmoths.socket.websocket.client;
 
 import java.lang.reflect.Type;
 import java.util.Date;
@@ -10,7 +10,7 @@ import org.springframework.messaging.simp.stomp.StompHeaders;
 import org.springframework.messaging.simp.stomp.StompSession;
 import org.springframework.messaging.simp.stomp.StompSessionHandlerAdapter;
 
-import ga.biointelligence.evolution.management.EvolutionOfMoths;
+import com.evolutionofmoths.evolution.management.EvolutionOfMoths;
 
 /**
  * Handler class responsible for sending messages to WebSocket Evolution.

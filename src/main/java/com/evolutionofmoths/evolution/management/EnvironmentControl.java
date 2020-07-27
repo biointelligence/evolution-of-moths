@@ -1,4 +1,4 @@
-package ga.biointelligence.evolution.management;
+package com.evolutionofmoths.evolution.management;
 
 /**
  * Structure that presents the characteristics of an EnvironmentControl

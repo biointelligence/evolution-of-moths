@@ -1,7 +1,7 @@
-package ga.biointelligence.evolution;
+package com.evolutionofmoths.evolution;
 
-import ga.biointelligence.evolution.util.GeneticRandomnessUtil;
-import ga.biointelligence.evolution.util.ChromosomeConverterUtil;
+import com.evolutionofmoths.evolution.util.ChromosomeConverterUtil;
+import com.evolutionofmoths.evolution.util.GeneticRandomnessUtil;
 
 /**
  * Class that defines the structure of a Chromosome.

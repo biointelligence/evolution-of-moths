@@ -1,4 +1,4 @@
-package ga.biointelligence.evolution;
+package com.evolutionofmoths.evolution;
 
 import java.io.Serializable;
 
