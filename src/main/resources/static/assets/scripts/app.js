@@ -6,7 +6,7 @@ let environment = { red: 0, green: 0, blue: 0 };
 let generalCount = 0;
 let isConnect = true;
 
-function connect() {
+function connect(reconnect) {
     console.log(window.location.href + 'evolution');
     const socket = new SockJS(window.location.href + "evolution");
     stompClient = Stomp.over(socket);
@@ -22,17 +22,20 @@ function connect() {
             if (
                 environment.red !== response.redEnvironment ||
                 environment.green !== response.greenEnvironment ||
-                environment.blue !== response.blueEnvironment
+                environment.blue !== response.blueEnvironment ||
+                reconnect
             ) {
                 environment = {
                     red: response.redEnvironment,
                     green: response.greenEnvironment,
                     blue: response.blueEnvironment
                 };
+
                 generalCount = (timerNextGeneration * generationPerEnvironment);
                 if (response.currentGeneration !== 1) {
                     generalCount -= timerNextGeneration * (response.currentGeneration - 1);
                 }
+
                 setEnvironmentColor();
             }
 
@@ -51,14 +54,14 @@ function disconnect() {
         btn.textContent = "Connect";
     } else if (!isConnect) {
         isConnect = true;
-        connect();
+        connect(true);
         btn.style.backgroundColor = "#C62828";
         btn.textContent = "Disconnect";
     }
 }
 
 function scrollToContent() {
-    window.scrollTo(0, document.getElementById("content").offsetTop);
+    window.scrollTo(0, document.getElementById("content").offsetTop - 20);
 }
 
 function removeLoader() {
@@ -110,12 +113,14 @@ function setEnvironmentColor() {
 
     const currentEnvironmentColor = document.getElementById("currentEnvironmentColor");
     currentEnvironmentColor.style.backgroundColor = "rgb(" + environment.red + "," + environment.green + "," + environment.blue + ")";
-
     const LastEnvironmentContainer = document.getElementById("LastEnvironmentContainer");
     if (
-        lastEnvironment.red !== null ||
+        (lastEnvironment.red !== null ||
         lastEnvironment.green !== null ||
-        lastEnvironment.blue !== null
+        lastEnvironment.blue !== null) &&
+        (environment.red !== lastEnvironment.red &&
+        environment.red !== lastEnvironment.green &&
+        environment.red !== lastEnvironment.blue)
     ) {
         const lastEnvironmentColor = document.getElementById("lastEnvironmentColor");
         lastEnvironmentColor.style.backgroundColor = "rgb(" + lastEnvironment.red + "," + lastEnvironment.green + "," + lastEnvironment.blue + ")";
