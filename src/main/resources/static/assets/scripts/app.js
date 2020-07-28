@@ -46,17 +46,21 @@ function connect(reconnect) {
 }
 
 function disconnect() {
-    const btn = document.getElementById("button-connect");
+    const buttons = document.querySelectorAll("span.button-connect");
     if (stompClient !== null && isConnect) {
         isConnect = false;
         stompClient.disconnect();
-        btn.style.backgroundColor = "#43B581";
-        btn.textContent = "Connect";
+        buttons.forEach(function (btn) {
+            btn.style.backgroundColor = "#43B581";
+            btn.textContent = "Connect";
+        });
     } else if (!isConnect) {
         isConnect = true;
         connect(true);
-        btn.style.backgroundColor = "#C62828";
-        btn.textContent = "Disconnect";
+        buttons.forEach(function (btn) {
+            btn.style.backgroundColor = "#C62828";
+            btn.textContent = "Disconnect";
+        });
     }
 }
 
@@ -94,7 +98,7 @@ function setTimeNextGeneration() {
 }
 
 function setTimeNextEnvironment() {
-    var timeNextEnvironmentElement = document.getElementById("timeNextEnvironment");
+    const timeNextEnvironmentElement = document.getElementById("timeNextEnvironment");
     timeNextEnvironmentElement.textContent = generalCount + "s";
 
     const timer = setInterval(function () {
@@ -136,6 +140,6 @@ function setMothColor(mothsColors) {
     const moths = document.querySelectorAll("div.hexagon");
 
     moths.forEach(function (moth, index) {
-        moth.style.backgroundColor = "rgb(" + mothsColors[index].red + "," + mothsColors[index].green + "," + mothsColors[index].blue + ")"
+        moth.style.backgroundColor = "rgb(" + mothsColors[index].red + "," + mothsColors[index].green + "," + mothsColors[index].blue + ")";
     });
 }

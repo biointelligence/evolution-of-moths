@@ -29,8 +29,12 @@
     <main id="main">
       <div id="container-main">
         <div id="hive" class="w-100 vh-100 d-flex">
+          <div id="container-info-top-1" class="container-info-top w-100 d-flex justify-content-center align-items-center">
+            <img class="logo mr-3" src="assets/img/logo.png" alt="Evolution of Moths" />
+            <span class="button-connect" onclick="disconnect()">Disconnect</span>
+          </div>
           <div id="grid" class="clear">
-            <div class="hexagon-group" style="margin-right: -10px;">
+            <div id="hexagon-group-1" class="hexagon-group">
               <div class="hexagon-container"><div class="hexagon"></div></div>
               <div class="hexagon-container"><div class="hexagon"></div></div>
               <div class="hexagon-container"><div class="hexagon"></div></div>
@@ -38,17 +42,7 @@
               <div class="hexagon-container"><div class="hexagon"></div></div>
             </div>
 
-            <div class="hexagon-group" style="margin-right: -7px;">
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-            </div>
-
-            <div class="hexagon-group" style="margin-right: -4px;">
-              <div class="hexagon-container"><div class="hexagon"></div></div>
+            <div id="hexagon-group-2" class="hexagon-group">
               <div class="hexagon-container"><div class="hexagon"></div></div>
               <div class="hexagon-container"><div class="hexagon"></div></div>
               <div class="hexagon-container"><div class="hexagon"></div></div>
@@ -57,8 +51,7 @@
               <div class="hexagon-container"><div class="hexagon"></div></div>
             </div>
 
-            <div class="hexagon-group" style="margin-right: -1px;">
-              <div class="hexagon-container"><div class="hexagon"></div></div>
+            <div id="hexagon-group-3"  class="hexagon-group">
               <div class="hexagon-container"><div class="hexagon"></div></div>
               <div class="hexagon-container"><div class="hexagon"></div></div>
               <div class="hexagon-container"><div class="hexagon"></div></div>
@@ -68,8 +61,7 @@
               <div class="hexagon-container"><div class="hexagon"></div></div>
             </div>
 
-            <div class="hexagon-group" style="margin-left: -2px;">
-              <div class="hexagon-container"><div class="hexagon"></div></div>
+            <div id="hexagon-group-4" class="hexagon-group">
               <div class="hexagon-container"><div class="hexagon"></div></div>
               <div class="hexagon-container"><div class="hexagon"></div></div>
               <div class="hexagon-container"><div class="hexagon"></div></div>
@@ -80,7 +72,19 @@
               <div class="hexagon-container"><div class="hexagon"></div></div>
             </div>
 
-            <div class="hexagon-group" style="margin-left: -5px;">
+            <div id="hexagon-group-5" class="hexagon-group">
+              <div class="hexagon-container"><div class="hexagon"></div></div>
+              <div class="hexagon-container"><div class="hexagon"></div></div>
+              <div class="hexagon-container"><div class="hexagon"></div></div>
+              <div class="hexagon-container"><div class="hexagon"></div></div>
+              <div class="hexagon-container"><div class="hexagon"></div></div>
+              <div class="hexagon-container"><div class="hexagon"></div></div>
+              <div class="hexagon-container"><div class="hexagon"></div></div>
+              <div class="hexagon-container"><div class="hexagon"></div></div>
+              <div class="hexagon-container"><div class="hexagon"></div></div>
+            </div>
+
+            <div id="hexagon-group-6" class="hexagon-group">
               <div class="hexagon-container"><div class="hexagon"></div></div>
               <div class="hexagon-container"><div class="hexagon"></div></div>
               <div class="hexagon-container"><div class="hexagon"></div></div>
@@ -91,7 +95,7 @@
               <div class="hexagon-container"><div class="hexagon"></div></div>
             </div>
 
-            <div class="hexagon-group" style="margin-left: -8px;">
+            <div id="hexagon-group-7" class="hexagon-group">
               <div class="hexagon-container"><div class="hexagon"></div></div>
               <div class="hexagon-container"><div class="hexagon"></div></div>
               <div class="hexagon-container"><div class="hexagon"></div></div>
@@ -101,7 +105,7 @@
               <div class="hexagon-container"><div class="hexagon"></div></div>
             </div>
 
-            <div class="hexagon-group" style="margin-left: -11px;">
+            <div id="hexagon-group-8" class="hexagon-group">
               <div class="hexagon-container"><div class="hexagon"></div></div>
               <div class="hexagon-container"><div class="hexagon"></div></div>
               <div class="hexagon-container"><div class="hexagon"></div></div>
@@ -110,7 +114,7 @@
               <div class="hexagon-container"><div class="hexagon"></div></div>
             </div>
 
-            <div style="margin-left: -14px;">
+            <div id="hexagon-group-9">
               <div class="hexagon-container"><div class="hexagon"></div></div>
               <div class="hexagon-container"><div class="hexagon"></div></div>
               <div class="hexagon-container"><div class="hexagon"></div></div>
@@ -119,9 +123,9 @@
             </div>
           </div>
           <div class="container-info">
-            <div class="container-info-top d-flex justify-content-around align-items-center">
+            <div id="container-info-top-2" class="container-info-top d-flex justify-content-around align-items-center">
               <img class="logo" src="assets/img/logo.png" alt="Evolution of Moths" />
-              <span id="button-connect" onclick="disconnect()">Disconnect</span>
+              <span class="button-connect" onclick="disconnect()">Disconnect</span>
             </div>
             <div class="container-info-middle d-flex flex-column">
               <div class="w-100 d-flex align-items-center justify-content-between mb-6">
