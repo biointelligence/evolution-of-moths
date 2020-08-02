@@ -15,9 +15,18 @@ public class IndividualSelectionUtil {
 	    double drawnPoint = GeneticRandomnessUtil.random.nextDouble() * 100;
 	    Individual selected = null;
 	    
+	    if (drawnPoint > 99) 
+	    	drawnPoint = 100;
+	    
+	    
 	    for (Individual individual : population.getIndividuals()) {
-	        if (drawnPoint >= individual.getPieFitness()[0] &&
-	            drawnPoint <= individual.getPieFitness()[1]) {
+	    	
+	    	double initialRange = individual.getPieFitness()[0];
+	    	double finalRange = individual.getPieFitness()[1];
+	    	
+	        if (drawnPoint >= 
+	        		initialRange &&
+	            drawnPoint <= finalRange) {
 	            selected = individual;
 	            break;
 	        }
@@ -25,5 +34,18 @@ public class IndividualSelectionUtil {
 	    
 	    return selected;
     }
+	
+
+public static void main(String...strings ) {
+	
+	double drawnPoint = GeneticRandomnessUtil.random.nextDouble() * 100;
+	
+	while (drawnPoint < 99.9) {
+		drawnPoint = GeneticRandomnessUtil.random.nextDouble() * 100;
+		System.out.println(drawnPoint);
+	}}
 
 }
+
+
+	
