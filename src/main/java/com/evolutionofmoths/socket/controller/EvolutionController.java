@@ -12,6 +12,7 @@ import com.evolutionofmoths.evolution.management.EnvironmentControl;
 import com.evolutionofmoths.evolution.management.EvolutionOfMoths;
 import com.evolutionofmoths.evolution.management.PopulationControl;
 
+import org.springframework.context.annotation.Scope;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.scheduling.annotation.EnableScheduling;
@@ -19,6 +20,7 @@ import org.springframework.stereotype.Controller;
 
 @Controller
 @EnableScheduling
+@Scope("websocket")
 public class EvolutionController {
 
 	private static final Logger log = LoggerFactory.getLogger(EvolutionController.class);

@@ -66,6 +66,10 @@ public class NaturalSelection {
 		
 		final IndividualSelectionUtil individualSelectionUtil = new IndividualSelectionUtil();
 		final EvolutionClientSocket clientSocket = new EvolutionClientSocket();
+		MothPopulation newGeneration = null;
+		Individual individual1 = null;
+		Individual individual2 = null;
+		Individual[] children = null;
 		
 		final EvolutionControl evolutionControl = EvolutionControl.getEvolutionControl();
 		evolutionControl.setStatus(EvolutionControl.Status.ACTIVE);
@@ -129,17 +133,16 @@ public class NaturalSelection {
 				}
 			}
 			
-			MothPopulation newGeneration = new MothPopulation(lengthPopulation, lengthChromosome,
+			newGeneration = new MothPopulation(lengthPopulation, lengthChromosome,
 					lengthSpaceSearch, generation, false);
 
 			// It covers the quantity referring to half of the defined population.
 			for (int pm = 0; pm < midpointOfThePopulation; pm++) {
 				// In the current generation, it selects two more adapted individuals.
-				Individual individual1 = individualSelectionUtil.addictedRoulette(population);
-				Individual individual2 = individualSelectionUtil.addictedRoulette(population);
+				 individual1 = individualSelectionUtil.addictedRoulette(population);
+				 individual2 = individualSelectionUtil.addictedRoulette(population);
 				
 				// It performs the crossing of the fittest resulting in two individuals.
-				Individual[] children;
 				try {
 					children = individual1.crossOver(individual2, rateCrossOver);
 				} catch (Exception e) {
