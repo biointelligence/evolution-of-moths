@@ -19,10 +19,11 @@ import com.evolutionofmoths.evolution.management.PopulationControl;
 
 @Controller
 @EnableScheduling
-@Scope("websocket")
+@Scope("application")
 public class EvolutionController {
 
 	private static final Logger log = LoggerFactory.getLogger(EvolutionController.class);
+	
 
 	// Listening to the messages of the topic evolution of months.
 	@MessageMapping("/evolution")
@@ -31,8 +32,7 @@ public class EvolutionController {
 	public EvolutionOfMoths getMoths(final Date dataMessage) throws Exception {
 		final EvolutionOfMoths evolutionOfMoths = new EvolutionOfMoths();
 
-		final List<Moths> moths = PopulationControl.getControl().getCurrentMothPopulation();
-		evolutionOfMoths.setMoths(moths);
+		evolutionOfMoths.setMoths(PopulationControl.getControl().getCurrentMothPopulation());
 		evolutionOfMoths.setCurrentGeneration(PopulationControl.getControl().getCurrentGeneration());
 		
 		evolutionOfMoths.setRedEnvironment(EnvironmentControl.getControl().getRed());

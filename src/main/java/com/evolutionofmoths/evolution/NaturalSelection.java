@@ -63,7 +63,6 @@ public class NaturalSelection {
 		int generation = 0;
 
 		final IndividualSelectionUtil individualSelectionUtil = new IndividualSelectionUtil();
-		final EvolutionClientSocket clientSocket = new EvolutionClientSocket();
 		MothPopulation newGeneration = null;
 		Individual individual1 = null;
 		Individual individual2 = null;
@@ -86,6 +85,8 @@ public class NaturalSelection {
 
 		// Configures the best solution of the first generation.
 		this.bestChromosome = population.getBestIndividual();
+		
+		EvolutionClientSocket clientSocket = new EvolutionClientSocket();
 
 		while (generation < MAXIMUM_AMOUNT_GENERATION_ENVIRONMENT) {
 			generation++;
@@ -93,7 +94,7 @@ public class NaturalSelection {
 			// Updates current population information.
 			PopulationControl.getControl().setMothsPopulation(population);
 			PopulationControl.getControl().setCurrentGeneration(generation);
-
+			
 			clientSocket.updateTopic();
 
 			int countingIndividuals = 0;

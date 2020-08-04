@@ -33,5 +33,6 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
 		        .setHandshakeHandler(new DefaultHandshakeHandler(upgradeStrategy))
 		        .setAllowedOrigins("*");
 	}
+	
 
 }	

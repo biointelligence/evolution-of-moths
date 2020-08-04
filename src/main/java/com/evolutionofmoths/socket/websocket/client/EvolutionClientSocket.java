@@ -20,6 +20,7 @@ public class EvolutionClientSocket {
 
 		EvolutionSessionHandler sessionHandler = new EvolutionSessionHandler();
 		stompClient.connect(url, sessionHandler);
+	
 	}
 
 }

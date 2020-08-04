@@ -29,6 +29,8 @@ public class EvolutionSessionHandler extends StompSessionHandlerAdapter {
 
 		session.send("/app/evolution", new Date());
 		log.debug("[Evolution Socket] - Message sent to the WebSocket server.");
+		
+		session.disconnect(connectedHeaders);
 	}
 
 	@Override
