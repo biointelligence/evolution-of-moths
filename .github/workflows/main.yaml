@@ -44,4 +44,4 @@ jobs:
             docker pull biointelligence/evolution-of-moths:latest
             docker stop evm
             docker rm evm
-            docker run -e JAVA_OPTS='-Xms512M -Xmx512M -XX:PermSize=256m -XX:MaxPermSize=256m' --name=evm --restart=always -p 80:2000 -d biointelligence/evolution-of-moths:latest
+            docker run --name=evm --restart=always -p 80:2000 -d biointelligence/evolution-of-moths:latest
