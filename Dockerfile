@@ -8,12 +8,10 @@ RUN mvn -f /home/app/pom.xml clean package -DskipTests
 FROM openjdk:8-jre
 COPY --from=build /home/app/target/evolution-of-moths-0.0.1-SNAPSHOT.jar /usr/local/lib/evolution-of-moths-0.0.1-SNAPSHOT.jar
 
-ENV JAVA_OPTS=""
-
 RUN ls /usr/local/lib/
 
 RUN echo "America/Sao_Paulo"  > /etc/timezone && dpkg-reconfigure -f noninteractive tzdata
 
 EXPOSE 2000
 
-ENTRYPOINT ["java $JAVA_OPTS -Djava.security.egd=file:/dev/./urandom -XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap", "-jar", "/usr/local/lib/evolution-of-moths-0.0.1-SNAPSHOT.jar"]
+ENTRYPOINT ["java","-Xms512M -Xmx512M -XX:PermSize=256m -XX:MaxPermSize=256m -Djava.security.egd=file:/dev/./urandom", "-XX:+UnlockExperimentalVMOptions", "-XX:+UseCGroupMemoryLimitForHeap", "-jar", "/usr/local/lib/evolution-of-moths-0.0.1-SNAPSHOT.jar"]
