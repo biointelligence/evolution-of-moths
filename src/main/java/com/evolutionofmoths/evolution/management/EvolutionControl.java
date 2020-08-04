@@ -9,7 +9,7 @@ public final class EvolutionControl {
 	private Status status;
 	
 	public enum Status {
-		ACTIVE, INACTIVE
+		ACTIVE, INACTIVE 
 	}
 	
 	private EvolutionControl() { }

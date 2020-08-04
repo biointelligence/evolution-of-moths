@@ -22,13 +22,13 @@ public class EvolutionSessionHandler extends StompSessionHandlerAdapter {
 
 	@Override
 	public void afterConnected(StompSession session, StompHeaders connectedHeaders) {
-		log.info("[Evolution Socket] - New session started: " + session.getSessionId() + " .");
+		log.debug("[Evolution Socket] - New session started: " + session.getSessionId() + " .");
 
 		session.subscribe("/topic/evolution-of-moths", this);
-		log.info("[Evolution Socket] - Subscription on /topic/evolution-of-moths .");
+		log.debug("[Evolution Socket] - Subscription on /topic/evolution-of-moths .");
 
 		session.send("/app/evolution", new Date());
-		log.info("[Evolution Socket] - Message sent to the WebSocket server.");
+		log.debug("[Evolution Socket] - Message sent to the WebSocket server.");
 	}
 
 	@Override
