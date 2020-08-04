@@ -14,4 +14,4 @@ RUN echo "America/Sao_Paulo"  > /etc/timezone && dpkg-reconfigure -f noninteract
 
 EXPOSE 2000
 
-ENTRYPOINT ["java", $JAVA_OPTS ,"-Djava.security.egd=file:/dev/./urandom", "-XX:+UnlockExperimentalVMOptions", "-XX:+UseCGroupMemoryLimitForHeap", "-jar", "/usr/local/lib/evolution-of-moths-0.0.1-SNAPSHOT.jar"]
+ENTRYPOINT ["java $JAVA_OPTS" ,"-Djava.security.egd=file:/dev/./urandom", "-XX:+UnlockExperimentalVMOptions", "-XX:+UseCGroupMemoryLimitForHeap", "-jar", "/usr/local/lib/evolution-of-moths-0.0.1-SNAPSHOT.jar"]
