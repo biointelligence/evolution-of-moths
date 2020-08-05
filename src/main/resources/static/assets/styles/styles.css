@@ -59,7 +59,7 @@ footer {
     position: relative;
     width: 100%;
     min-height: 32px;
-    margin: 3rem auto 0;
+    margin: 0 auto;
     background-color: #2F3136;
     color: #FFFFFF;
     cursor: default;
@@ -115,6 +115,14 @@ footer {
 
 .text-center {
     text-align: center;
+}
+
+.pt-4 {
+    padding-top: 2rem;
+}
+
+.pt-6 {
+    padding-bottom: 3rem;
 }
 
 .mt-2 {
@@ -539,7 +547,6 @@ footer {
     width: 38%;
     height: 100%;
     margin-left: 2%;
-    /*background-color: #2F3136;*/
     padding: 8rem 0;
     color: #2a2d33;
 }
@@ -749,6 +756,7 @@ footer {
 }
 
 .footer-link {
+    color: #FFFFFF;
     margin: 0 .25rem;
 }
 

@@ -15,7 +15,7 @@
 	<artifactId>evolution-of-moths</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>evolution-of-moths</name>
-	<description>Monitoring a population of virtual beings that adapt to the environment in which they live.</description>
+	<description>The Evolution of Moths monitoring a population of virtual beings that adapt to the environment in which they live.</description>
 
 	<properties>
 		<java.version>1.8</java.version>
