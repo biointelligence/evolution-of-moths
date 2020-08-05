@@ -141,12 +141,11 @@ public class NaturalSelection {
 			// The new population to have the most adapted individuals of the generations.
 			population = newGeneration;
 
-			/*try {
+			try {
 				Thread.sleep(INTERVAL_BETWEEN_GENERATIONS);
 			} catch (InterruptedException e) {
 				continue;
 			}
-*/
 		}
 
 		return EvolutionControl.Status.ACTIVE;
