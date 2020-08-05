@@ -19,7 +19,6 @@ import com.evolutionofmoths.evolution.management.PopulationControl;
 
 @Controller
 @EnableScheduling
-@Scope("application")
 public class EvolutionController {
 
 	private static final Logger log = LoggerFactory.getLogger(EvolutionController.class);
