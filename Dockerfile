@@ -10,8 +10,8 @@ COPY --from=build /home/app/target/evolution-of-moths-0.0.1-SNAPSHOT.jar /usr/lo
 
 RUN ls /usr/local/lib/
 
-RUN echo "America/Sao_Paulo"  > /etc/timezone && dpkg-reconfigure -f noninteractive tzdata
+RUN echo "America/Sao_Paulo" > /etc/timezone && dpkg-reconfigure -f noninteractive tzdata
 
 EXPOSE 2000
 
-ENTRYPOINT ["java","-XX:MinHeapFreeRatio=20","-XX:MaxHeapFreeRatio=40", "-XX:+UnlockExperimentalVMOptions", "-XX:+UseCGroupMemoryLimitForHeap", "-jar", "/usr/local/lib/evolution-of-moths-0.0.1-SNAPSHOT.jar"]
+RUN "java -XX:MinHeapFreeRatio=20 -XX:MaxHeapFreeRatio=40 -XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap -jar /usr/local/lib/evolution-of-moths-0.0.1-SNAPSHOT.jar &"
