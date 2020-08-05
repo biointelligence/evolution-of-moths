@@ -23,7 +23,6 @@ public class EvolutionController {
 
 	private static final Logger log = LoggerFactory.getLogger(EvolutionController.class);
 	
-
 	// Listening to the messages of the topic evolution of months.
 	@MessageMapping("/evolution")
 	@SendTo("/topic/evolution-of-moths")
