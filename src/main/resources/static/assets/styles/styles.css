@@ -720,6 +720,21 @@ footer {
     }
 }
 
+.from-evm {
+    margin-bottom: 1rem;
+    margin-left: 3px;
+    margin-top: -5px;
+}
+
+.from-evm-link {
+    color: #2F3136;
+    text-transform: none;
+}
+
+.from-evm-link:active, .from-evm-link:visited {
+    color: #2F3136;
+}
+
 .content-img {
     border-radius: 15px 0 15px 0;
 }
