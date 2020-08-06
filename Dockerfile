@@ -1,17 +1,30 @@
 FROM maven:3.6.3-jdk-8 as build
+LABEL maintainer="Carlos Aiello <aiellosti@gmail.com>, Felipe Côrtes <contatos.cortes@gmail.com>"
 
 COPY src /home/app/src
 COPY pom.xml /home/app
 
 RUN mvn -f /home/app/pom.xml clean package -DskipTests
 
-FROM openjdk:8-jre
-COPY --from=build /home/app/target/evolution-of-moths-0.0.1-SNAPSHOT.jar /usr/local/lib/evolution-of-moths-0.0.1-SNAPSHOT.jar
+FROM staticfloat/nginx-certbot:latest
 
-RUN ls /usr/local/lib/
+ENV CERTBOT_EMAIL=contatos.cortes@gmail.com \
+    ENVSUBST_VARS=FQDN \
+    FQDN=evolution-of-moths.com \
+    IS_STAGING=1
 
-RUN echo "America/Sao_Paulo" > /etc/timezone && dpkg-reconfigure -f noninteractive tzdata
+COPY ./config /etc/nginx/user.conf.d
+COPY --from=build /home/app/target/evolution-of-moths-1.0.0.jar /usr/local/lib/evolution-of-moths-1.0.0.jar
 
-EXPOSE 2000
+RUN apt update -y && \
+    apt install wget -y && \
+    echo "America/Sao_Paulo" > /etc/timezone && \
+    dpkg-reconfigure -f noninteractive tzdata && \
+    wget -q https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u265-b01/OpenJDK8U-jre_x64_linux_hotspot_8u265b01.tar.gz && \
+    tar xzf OpenJDK8U-jre_x64_linux_hotspot_8u265b01.tar.gz
 
-ENTRYPOINT ["java","-XX:MinHeapFreeRatio=20", "-XX:MaxHeapFreeRatio=40", "-XX:+UnlockExperimentalVMOptions", "-XX:+UseCGroupMemoryLimitForHeap", "-jar", "/usr/local/lib/evolution-of-moths-0.0.1-SNAPSHOT.jar"]
+RUN jdk8u265-b01-jre/bin/java -XX:MinHeapFreeRatio=20 -XX:MaxHeapFreeRatio=40 -XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap -jar /usr/local/lib/evolution-of-moths-1.0.0.jar &
+
+EXPOSE 80 443
+
+# CMD ["nginx", "-g", "daemon off;"]

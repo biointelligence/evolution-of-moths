@@ -13,7 +13,7 @@
 
 	<groupId>logicaevolutiva.ga</groupId>
 	<artifactId>evolution-of-moths</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<name>evolution-of-moths</name>
 	<description>The Evolution of Moths monitoring a population of virtual beings that adapt to the environment in which they live.</description>
 
