@@ -10,7 +10,7 @@ COPY --from=build /home/app/target/evolution-of-moths-1.0.0.jar /usr/local/lib/e
 
 RUN ls /usr/local/lib/
 
-RUN echo "America/Sao_Paulo"  > /etc/timezone && dpkg-reconfigure -f noninteractive tzdata
+RUN echo "America/Sao_Paulo" > /etc/timezone && dpkg-reconfigure -f noninteractive tzdata
 
 EXPOSE 2000
 
