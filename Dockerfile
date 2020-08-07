@@ -23,8 +23,14 @@ RUN apt update -y && \
     wget -q https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u265-b01/OpenJDK8U-jre_x64_linux_hotspot_8u265b01.tar.gz && \
     tar xzf OpenJDK8U-jre_x64_linux_hotspot_8u265b01.tar.gz
 
-RUN jdk8u265-b01-jre/bin/java -XX:MinHeapFreeRatio=20 -XX:MaxHeapFreeRatio=40 -XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap -jar /usr/local/lib/evolution-of-moths-1.0.0.jar &
+#ENTRYPOINT [ "/jdk8u265-b01-jre/bin/java -XX:MinHeapFreeRatio=20 -XX:MaxHeapFreeRatio=40 -XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap -jar /usr/local/lib/evolution-of-moths-1.0.0.jar &" ] 
+
+
+COPY call-services.sh .
+RUN chmod +x call-services.sh
+
+ENTRYPOINT [ "./call-services.sh" ]
 
 EXPOSE 80 443
 
-# CMD ["nginx", "-g", "daemon off;"]
+CMD ["nginx", "-g", "daemon off;"]
