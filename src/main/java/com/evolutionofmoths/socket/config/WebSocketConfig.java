@@ -19,8 +19,6 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
 		config.setApplicationDestinationPrefixes("/app");
 	}
 	
-
-
 	/**
 	 * Registering the WebSocket evolution.
 	 */
