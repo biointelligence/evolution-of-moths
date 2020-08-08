@@ -117,6 +117,10 @@ footer {
     text-align: center;
 }
 
+.text-justify {
+    text-align: justify;
+}
+
 .pt-4 {
     padding-top: 2rem;
 }
