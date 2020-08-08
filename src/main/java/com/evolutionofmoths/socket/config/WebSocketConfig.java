@@ -14,9 +14,6 @@ import org.springframework.web.socket.server.support.DefaultHandshakeHandler;
 @EnableWebSocketMessageBroker
 public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
 	
-	@Value("${websocket.allowed.origins}")
-	private String [] websocketAllowedOrigins;
-
 	@Override
 	public void configureMessageBroker(MessageBrokerRegistry config) {
 		config.enableSimpleBroker("/topic");
@@ -30,11 +27,14 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
 	public void registerStompEndpoints(StompEndpointRegistry registry) {
 		RequestUpgradeStrategy upgradeStrategy = new TomcatRequestUpgradeStrategy();
 
-		registry.addEndpoint("/evolution").withSockJS();
+		registry.addEndpoint("/evolution").withSockJS().
+		setClientLibraryUrl("https://cdn.jsdelivr.net/npm/sockjs-client@1.3.0/dist/sockjs.min.js");
 
 		registry.addEndpoint("/evolution").setHandshakeHandler(new DefaultHandshakeHandler(upgradeStrategy))
-				.setAllowedOrigins(websocketAllowedOrigins);
+				.setAllowedOrigins("*");
 	}
+	
+	
 
 
 }
