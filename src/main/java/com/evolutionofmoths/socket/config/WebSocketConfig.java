@@ -28,7 +28,7 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
 		RequestUpgradeStrategy upgradeStrategy = new TomcatRequestUpgradeStrategy();
 
 		registry.addEndpoint("/evolution").withSockJS().
-		setClientLibraryUrl("https://cdn.jsdelivr.net/npm/sockjs-client@1.3.0/dist/sockjs.min.js");
+		setClientLibraryUrl("https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.0.2/sockjs.min.js");
 
 		registry.addEndpoint("/evolution").setHandshakeHandler(new DefaultHandshakeHandler(upgradeStrategy))
 				.setAllowedOrigins("*");
