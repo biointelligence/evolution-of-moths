@@ -47,40 +47,7 @@ public class EvolutionSessionHandler extends StompSessionHandlerAdapter {
 	@Override
 	public void handleFrame(StompHeaders headers, Object payload) {
 
-		/*final EvolutionOfMoths evolutionOfMoths = (EvolutionOfMoths) payload;
-		final StringBuilder print = new StringBuilder();
-		
-		print.append("\n");
-		print.append("---------------------- Geracao -------------------");
-		print.append("\n");
-		print.append(String.valueOf(evolutionOfMoths.getGeracaoAtual()));
-		print.append("\n");
-
-		print.append("---------------------- Ambiente -------------------");
-
-		print.append("\n");
-		print.append("\n");
-
-
-		print.append(String.valueOf(" Ambiente Vermelho " + evolutionOfMoths.getAmbienteVermelho())
-				+ String.valueOf(" Ambiente Verde " + evolutionOfMoths.getAmbienteVerde())
-				+ String.valueOf(" Ambiente Azul " + evolutionOfMoths.getAmbienteAzul()));
-
-		print.append("\n");
-		print.append("\n");
-
-
-		print.append("---------------------- Mariposas -------------------");
-		print.append("\n");
-		print.append("\n");
-
-		evolutionOfMoths.getMariposas().forEach(m -> {
-
-			print.append(String.valueOf(" Vermelho " + m.getVermelho()) + String.valueOf(" Verde " + m.getVerde())
-					+ String.valueOf(" Azul " + m.getAzul()) + "\n");
-		});
-		
-		log.info(print.toString()); */
+		//final EvolutionOfMoths evolutionOfMoths = (EvolutionOfMoths) payload;
 
 	}
 
