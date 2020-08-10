@@ -44,4 +44,4 @@ jobs:
             docker pull biointelligence/evolution-of-moths:latest
             docker stop evm
             docker rm evm
-            docker run --name=evm --restart=always -p 80:2000 -d biointelligence/evolution-of-moths:latest
+            docker run --name=evm --restart=always -p 127.0.0.1:2000:2000 -d biointelligence/evolution-of-moths:latest

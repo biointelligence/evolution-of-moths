@@ -1,6 +1,5 @@
 package com.evolutionofmoths.socket.config;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.messaging.simp.config.MessageBrokerRegistry;
 import org.springframework.web.socket.config.annotation.EnableWebSocketMessageBroker;
@@ -33,8 +32,5 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
 		registry.addEndpoint("/evolution").setHandshakeHandler(new DefaultHandshakeHandler(upgradeStrategy))
 				.setAllowedOrigins("*");
 	}
-	
-	
-
 
 }
