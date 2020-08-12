@@ -1,7 +1,6 @@
 const timerNextGeneration = 4;
 const generationPerEnvironment = 40;
 let stompClient = null;
-let lastEnvironment = { red: null, green: null, blue: null };
 let environment = { red: 0, green: 0, blue: 0 };
 let generalCount = 0;
 let isConnect = true;
@@ -117,23 +116,6 @@ function setEnvironmentColor() {
 
     const currentEnvironmentColor = document.getElementById("currentEnvironmentColor");
     currentEnvironmentColor.style.backgroundColor = "rgb(" + environment.red + "," + environment.green + "," + environment.blue + ")";
-    const LastEnvironmentContainer = document.getElementById("LastEnvironmentContainer");
-    if (
-        (lastEnvironment.red !== null ||
-        lastEnvironment.green !== null ||
-        lastEnvironment.blue !== null) &&
-        (environment.red !== lastEnvironment.red &&
-        environment.red !== lastEnvironment.green &&
-        environment.red !== lastEnvironment.blue)
-    ) {
-        const lastEnvironmentColor = document.getElementById("lastEnvironmentColor");
-        lastEnvironmentColor.style.backgroundColor = "rgb(" + lastEnvironment.red + "," + lastEnvironment.green + "," + lastEnvironment.blue + ")";
-        LastEnvironmentContainer.style.display = "flex";
-    } else {
-        LastEnvironmentContainer.style.display = "none";
-    }
-
-    lastEnvironment = environment;
 }
 
 function setMothColor(mothsColors) {

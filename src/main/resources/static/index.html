@@ -6,7 +6,7 @@
 
     <link rel="icon" href="favicon.ico">
     <link rel="stylesheet" href="assets/styles/styles.css" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap">
     <link rel="manifest" href="manifest.json">
 
     <meta name="author" content="Carlos Aiello, Felipe Côrtes" />
@@ -25,7 +25,7 @@
     <script src="assets/scripts/app.js"></script>
   </head>
   <body onload="connect(false)">
-    <div id="loader" class="h-100 w-100 d-flex align-items-center justify-content-center">
+    <div id="loader">
       <div class="load-group">
         <div class="big-square">
           <div class="square first"></div>
@@ -33,17 +33,17 @@
           <div class="square third"></div>
           <div class="square fourth"></div>
         </div>
-        <div class="load-text">loading</div>
+        <p class="load-text">loading</p>
       </div>
     </div>
     <main id="main">
       <div id="container-main">
-        <div id="hive" class="w-100 vh-100 d-flex">
-          <div id="container-info-top-1" class="container-info-top w-100 d-flex justify-content-center align-items-center">
-            <img class="logo mr-3" src="assets/img/logo.png" alt="Evolution of Moths" />
+        <div id="hive">
+          <div id="container-info-top-mobile" class="container-info-top">
+            <img class="logo" src="assets/img/logo.png" alt="Evolution of Moths" />
             <span class="button-connect" onclick="disconnect()">Disconnect</span>
           </div>
-          <div id="grid" class="clear">
+          <div id="grid">
             <div id="hexagon-group-1" class="hexagon-group">
               <div class="hexagon-container"><div class="hexagon"></div></div>
               <div class="hexagon-container"><div class="hexagon"></div></div>
@@ -61,7 +61,7 @@
               <div class="hexagon-container"><div class="hexagon"></div></div>
             </div>
 
-            <div id="hexagon-group-3"  class="hexagon-group">
+            <div id="hexagon-group-3" class="hexagon-group">
               <div class="hexagon-container"><div class="hexagon"></div></div>
               <div class="hexagon-container"><div class="hexagon"></div></div>
               <div class="hexagon-container"><div class="hexagon"></div></div>
@@ -133,12 +133,12 @@
             </div>
           </div>
           <div class="container-info">
-            <div id="container-info-top-2" class="container-info-top d-flex justify-content-around align-items-center">
+            <div id="container-info-top" class="container-info-top">
               <img class="logo" src="assets/img/logo.png" alt="Evolution of Moths" />
               <span class="button-connect" onclick="disconnect()">Disconnect</span>
             </div>
-            <div class="container-info-middle d-flex flex-column">
-              <div class="w-100 d-flex align-items-center justify-content-between mb-6">
+            <div class="container-info-middle">
+              <div>
                 <div class="text-center w-35">
                   <div class="info-label">Next generation</div>
                   <div id="timeNextGeneration" class="info-data">0s</div>
@@ -148,44 +148,34 @@
                   <div id="currentEnvironment" class="info-data">0</div>
                 </div>
               </div>
-              <div class="w-100 d-flex align-items-center justify-content-between">
-                <div class="text-center w-35" style="margin-right: 2%;">
+              <div>
+                <div class="text-center w-35">
                   <div class="info-label">Next environment</div>
                   <div id="timeNextEnvironment" class="info-data">0s</div>
                 </div>
-                <div class="text-center" style="margin-left: 2%;">
-                  <div id="LastEnvironmentContainer" class="d-flex align-items-center justify-content-end mb-1">
-                    <div id="lastEnvironmentColor" class="info-color-circle-small"></div>
-                    <div class="info-color-label-small">Last environment</div>
-                  </div>
-                  <div class="d-flex align-items-center">
-                    <div id="currentEnvironmentColor" class="info-color-circle-default"></div>
-                    <div class="info-color-label-default">Current environment</div>
-                  </div>
+                <div class="text-center">
+                  <div class="info-label">Current<br/>environment color</div>
+                  <div id="currentEnvironmentColor" class="info-color"></div>
                 </div>
               </div>
             </div>
-            <div onclick="scrollToContent()" class="container-info-bottom d-flex w-100 align-items-center justify-content-center">
-              <div>
-                <img class="more-info-icon" src="assets/img/arrow-down-outline.svg" alt="Down arrow" />
-              </div>
-              <div class="more-info">See more about the project</div>
+            <div onclick="scrollToContent()" class="container-info-bottom">
+              <img class="arrow-down-icon" src="assets/img/arrow-down-outline.svg" alt="Down arrow" />
+              <span>See more about the project</span>
             </div>
           </div>
         </div>
       </div>
       <div class="d-flex justify-content-center pt-4 pt-6">
-        <div id="content" class="d-flex flex-column">
+        <div id="content">
           <h2 style="margin-top: 0!important;">Inspiration</h2>
           <div>
             <p class="text-justify">Evolution of moths establishes an intimate relationship between human ability to solve problems and natural processes. It is invaluable to observe how nature is able to find the best way to be able to continue its ecosystem.</p>
-            <p class="text-justify">Evolution of moths presents a strategy based on evolutionary biology with the purpose of offering solutions to real problems, whether scientific, technological or business.</p>
-            <p class="text-justify">Operating on the logic of genetic algorithms, it is possible to validate by observing in a simplistic model the adaptation process of the moths during the industrial revolution in England.</p>
+            <p class="text-justify">Evolution of moths presents a strategy based on evolutionary biology with the purpose of offering solutions to real problems, whether scientific, technological or business. Operating on the logic of genetic algorithms, it is possible to validate by observing in a simplistic model the adaptation process of the moths during the industrial revolution in England.</p>
             <p class="text-justify">Evolution of moths wants to influence developers to consider natural selection techniques for problem solving, allowing solutions to adapt to the environment in which they coexist.</p>
           </div>
 
           <h2 style="margin-bottom: 0!important;">Evolution of Moths</h2>
-          <span class="from-evm">From <a class="from-evm-link" href="https://en.wikipedia.org/wiki/Peppered_moth_evolution" target="_blank">Wikipedia</a></span>
           <div id="content-evolution-1" class="d-flex mt-2 content-evolution">
             <img src="assets/img/white-moth.jpg" alt="White moth" class="mr-3 content-img" style="width: 259px;height: 154px;" />
             <p class="text-justify">The <b>evolution of the peppered moth</b> is an evolutionary instance of directional colour change in the moth population as a consequence of air pollution during the Industrial Revolution. The frequency of dark-coloured moths increased at that time, an example of industrial melanism. Later, when pollution was reduced, the light-coloured form again predominated. Industrial melanism in the peppered moth was an early test of Charles Darwin's natural selection in action, and remains as a classic example in the teaching of evolution. In 1978 Sewall Wright described it as "the clearest case in which a conspicuous evolutionary process has actually been observed."</p>
@@ -196,7 +186,7 @@
           </div>
 
           <h2>More infos</h2>
-          <div class="d-flex w-100 flex-column align-items-center">
+          <div class="more-info">
             <iframe id="video" src="https://www.youtube.com/embed/Pop-xetGaBM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             <p id="subtitle-video">All the video rights are reserved to Rachel Taylor</p>
           </div>
