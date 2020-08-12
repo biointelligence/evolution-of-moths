@@ -2,6 +2,9 @@
 
 :root {
   --color-background: #F0F0F7;
+  --color-text-in-primary: #2a2d33;
+  --color-text-complement: #717682;
+  --color-white: #FFFFFF;
 }
 
 * {
@@ -35,8 +38,8 @@ main {
 
 h2 {
   font-size: 3rem;
-  color: #2a2d33;
-  margin: 1.25rem 0;
+  color: var(--color-text-in-primary);
+  margin: 0 0 1.25rem;
 }
 
 @media (max-width: 1100px) {
@@ -54,58 +57,9 @@ footer {
   width: 100%;
   min-height: 32px;
   margin: 0 auto;
-  background-color: #2F3136;
-  color: #FFFFFF;
+  background-color: var(--color-text-in-primary);
+  color: var(--color-white);
   cursor: default;
-}
-
-.d-flex {
-  display: flex;
-}
-
-.justify-content-center {
-  justify-content: center;
-}
-
-.text-center {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
-
-.text-center:nth-child(odd) {
-  width: 35%;
-}
-
-.text-justify {
-  text-align: justify;
-  text-indent: 50px;
-  margin-bottom: 1rem;
-  color: #2a2d33;
-}
-
-@media (max-width: 1100px) {
-  .text-justify {
-    line-height: 1.5;
-    text-indent: 25px;
-  }
-}
-
-.pt-4 {
-  padding-top: 2rem;
-}
-
-.pt-6 {
-  padding-bottom: 3rem;
-}
-
-.mt-2 {
-  margin-top: 1rem;
-}
-
-.mt-6 {
-  margin-top: 3rem;
 }
 
 .mr-3 {
@@ -123,11 +77,9 @@ footer {
 #loader {
   width: 100%;
   height: 100%;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   transition: opacity .2s;
 }
 
@@ -182,7 +134,7 @@ footer {
 .load-text {
   font-size: 24px;
   font-weight: 700;
-  color: #2F3136;
+  color: var(--color-text-in-primary);
   text-transform: uppercase;
 }
 
@@ -275,7 +227,6 @@ footer {
     opacity: 0;
     transform: translateY(100px);
   }
-
   100% {
     opacity: 1;
     transform: translateY(0);
@@ -308,7 +259,7 @@ footer {
   justify-content: center;
   flex-direction: column;
   clip-path: polygon(24% 7%, 75% 7%, 100% 50%, 74% 93%, 25% 93%, 0% 50%); /* polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%); */
-  transition: background-color 0.4s;
+  transition: background-color .4s;
 }
 
 #grid:after {
@@ -446,7 +397,7 @@ footer {
   -ms-transform: skewY(-30deg) rotate(60deg);
   transform: skewY(-30deg) rotate(60deg);
   overflow: hidden;
-  transition: background-color 0.4s;
+  transition: background-color .4s;
 }
 
 /* Infos */
@@ -459,7 +410,6 @@ footer {
   height: 100%;
   margin-left: 2%;
   padding: 8rem 0;
-  color: #2a2d33;
 }
 
 @media (max-width: 1100px) {
@@ -510,7 +460,7 @@ footer {
   height: 32px;
   font-size: 1rem;
   font-weight: 700;
-  color: #FFFFFF;
+  color: var(--color-white);
   background-color: #C62828;
   padding: 5px 2rem;
   line-height: 1.4rem;
@@ -543,18 +493,29 @@ footer {
   margin-bottom: 3rem;
 }
 
+.wrapper-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.wrapper-info:nth-child(odd) {
+  width: 35%;
+}
+
 .info-label {
   font-size: 1.25rem;
   font-weight: 600;
   line-height: 1.8rem;
-  color: #717682;
+  color: var(--color-text-complement);
   margin-bottom: .5rem;
 }
 
 .info-data {
   font-size: 2.5rem;
   font-weight: 400;
-  color: #2F3136;
+  color: var(--color-text-in-primary);
 }
 
 .info-color {
@@ -562,8 +523,8 @@ footer {
   height: 46px;
   border-radius: 100%;
   margin-top: .5rem;
-  transition: box-shadow 0.4s, background-color 0.4s;
-  background-color: white;
+  transition: box-shadow .2s, background-color .2s;
+  background-color: var(--color-white);
 }
 
 .info-color:hover {
@@ -593,14 +554,21 @@ footer {
 .container-info-bottom span {
   width: 150px;
   font-weight: 900;
-  line-height: 1.1;
+  line-height: 1.5rem;
   margin-left: .25rem;
   margin-top: -5px;
   font-size: 1.15rem;
+  color: var(--color-text-in-primary);
   user-select: none;
 }
 
 /* Body */
+
+.container-content {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2.5rem;
+}
 
 #content {
   display: flex;
@@ -615,7 +583,22 @@ footer {
   }
 }
 
+.paragraph {
+  text-align: justify;
+  text-indent: 50px;
+  margin-bottom: 1rem;
+  color: var(--color-text-in-primary);
+}
+
+@media (max-width: 1100px) {
+  .paragraph {
+    line-height: 1.5;
+    text-indent: 25px;
+  }
+}
+
 .content-evolution {
+  display: flex;
   align-items: center;
 }
 
@@ -662,7 +645,7 @@ footer {
 #subtitle-video {
   font-size: 0.85rem;
   font-style: italic;
-  color: rgba(0, 0, 0, .75);
+  color: var(--color-text-in-primary);
   margin-top: .25rem;
 }
 
@@ -673,10 +656,10 @@ footer {
 }
 
 .footer-link {
-  color: #FFFFFF;
+  color: var(--color-white);
   margin: 0 .25rem;
 }
 
 .footer-link:active, .footer-link:visited {
-  color: #FFFFFF;
+  color: var(--color-white);
 }
