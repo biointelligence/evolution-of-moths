@@ -62,6 +62,7 @@ h3 {
 
 footer {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   font-size: 1rem;
@@ -72,6 +73,7 @@ footer {
   background-color: var(--color-text-in-primary);
   color: var(--color-white);
   cursor: default;
+  padding: .5rem 0;
 }
 
 @media (max-width: 1100px) {
@@ -690,5 +692,14 @@ footer {
 }
 
 .footer-link:active, .footer-link:visited {
+  color: var(--color-white);
+}
+
+.footer-contributors-link {
+  color: var(--color-white);
+  text-decoration: none;
+}
+
+.footer-contributors-link:active, .footer-contributors-link:visited {
   color: var(--color-white);
 }
