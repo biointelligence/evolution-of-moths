@@ -8,7 +8,7 @@ This platform simulates a set of genes trying to adapt to its surroundings by ba
 
 The platform keeps running continuously and all viewers can see the same evolution taking place.
 
-<p align="center">
+<p align="center" style="display: flex;flex-direction: column;">
   <img src="src/main/resources/static/assets/img/chromosomes.jpg" alt="Chromosomes" width="500" />
   <span style="font-size: .75rem">Source: Middle East Medical</span>
 </p>
@@ -25,7 +25,7 @@ There was a time before the industrial revolution in England, when it was common
 
 Variations of this moth in dark color, was first identified in 1848, close to Manchester, and increased in frequency until constituting more than 90% of the population in areas considered polluted in the middle of the 20th century.
 
-<p align="center">
+<p align="center" style="display: flex;flex-direction: column;">
   <img src="src/main/resources/static/assets/img/peppered_moth.jpg" alt="Peppered moth" width="500" />
     <span style="font-size: .75rem">Source: ICR (Institute for Creation Research)</span>
 </p>
