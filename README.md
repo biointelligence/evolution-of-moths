@@ -8,25 +8,17 @@ This platform simulates a set of genes trying to adapt to its surroundings by ba
 
 The platform keeps running continuously and all viewers can see the same evolution taking place.
 
-<p align="center">
-  <img src="src/main/resources/static/assets/img/chromosomes.jpg" alt="Chromosomes" width="500" />
-</p>
-
 The evolutionary process is paced by imposing an interval of approximately 4 seconds between each generation and it involves a population of 15000 individuals trying to adapt to the color of their environment, which is defined in a random and independent way. Each of the 60 hexagons represents an individual who stands at a relevant point on the adaptation scale which ranges from the most to the least adapted.
 
 After the 40 generations defined for each randomly proposed environment, it is clear that most individuals representing their range in the adaptation scale have in their genetic structure genes that approximate the color of the environment. This is because the genes responsible for defining its color have already become predominant in that population.
 
 **Evolution of Moths** wants to influence developers to consider natural selection techniques for problem solving, allowing solutions to adapt to the environment in which they coexist.
 
-### A little bit about the history of peppered moth evolution
+## A little bit about the history of peppered moth evolution
 
 There was a time before the industrial revolution in England, when it was common to find these moths with a clear and peppered appearance.
 
 Variations of this moth in dark color, was first identified in 1848, close to Manchester, and increased in frequency until constituting more than 90% of the population in areas considered polluted in the middle of the 20th century.
-
-<p align="center">
-  <img src="src/main/resources/static/assets/img/peppered_moth.jpg" alt="Peppered moth" width="500" />
-</p>
 
 The environmental protection practices implemented around 1970 made the frequency of the dark colored moths in the 90's reduce drastically to less than 10% of the population.
 
