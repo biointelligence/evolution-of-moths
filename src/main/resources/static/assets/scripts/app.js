@@ -8,7 +8,9 @@ let isConnect = true;
 
 function connect(reconnect) {
     console.log(window.location.href + 'evolution');
-    const socket = new SockJS(window.location.href + "evolution");
+    const hostName = new URL(window.location.href).hostname;
+    const port = new URL(window.location.href).port;
+    const socket = new SockJS("http://" + hostName + ":" + port + "/evolution");
     stompClient = Stomp.over(socket);
     stompClient.connect({}, function (frame) {
         stompClient.subscribe("/topic/evolution-of-moths", function (evolutionOfMoths) {
