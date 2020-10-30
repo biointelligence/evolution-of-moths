@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Moths | Evolution of Moths</title>
+
+    <link rel="icon" href="favicon.ico">
+    <link rel="stylesheet" href="assets/styles/styles.css">
+    <link rel="stylesheet" href="assets/styles/moths.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap">
+    <link rel="manifest" href="manifest.json">
+
+    <meta name="author" content="Carlos Aiello, Felipe Côrtes">
+<!--    <meta name="description" content="The Evolution of Moths monitoring a population of virtual beings that adapt to the environment in which they live.">-->
+    <meta name="keywords" content="evolution of moths,peppered moth evolution">
+    <meta name="copyright" content="© 2020 by Carlos Aiello and Felipe Côrtes">
+    <meta name="theme-color" content="#2F3136">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="referrer" content="origin-when-cross-origin">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta http-equiv="content-language" content="en-US">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+    <script src="/webjars/sockjs-client/sockjs.min.js"></script>
+    <script src="/webjars/stomp-websocket/stomp.min.js"></script>
+    <script src="assets/scripts/app.js"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-150736691-2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-150736691-2');
+    </script>
+  </head>
+  <body onload="connect(false)">
+    <div id="loader">
+      <div class="load-group">
+        <div class="big-square">
+          <div class="square first"></div>
+          <div class="square second"></div>
+          <div class="square third"></div>
+          <div class="square fourth"></div>
+        </div>
+        <p class="load-text">loading</p>
+      </div>
+    </div>
+    <main id="main">
+      <div id="container-main">
+        <div id="hive">
+          <div id="container-info-top-mobile" class="container-info-top">
+            <a href="/">
+              <img class="logo" src="assets/img/logo.png" alt="Evolution of Moths" />
+            </a>
+
+            <span class="button-connect" onclick="disconnect()">Disconnect</span>
+          </div>
+          <div id="grid">
+            <div id="hexagon-group-1" class="hexagon-group">
+              <div class="hexagon-container"><div class="hexagon"></div></div>
+              <div class="hexagon-container"><div class="hexagon"></div></div>
+              <div class="hexagon-container"><div class="hexagon"></div></div>
+              <div class="hexagon-container"><div class="hexagon"></div></div>
+              <div class="hexagon-container"><div class="hexagon"></div></div>
+            </div>
+
+            <div id="hexagon-group-2" class="hexagon-group">
+              <div class="hexagon-container"><div class="hexagon"></div></div>
+              <div class="hexagon-container"><div class="hexagon"></div></div>
+              <div class="hexagon-container"><div class="hexagon"></div></div>
+              <div class="hexagon-container"><div class="hexagon"></div></div>
+              <div class="hexagon-container"><div class="hexagon"></div></div>
+              <div class="hexagon-container"><div class="hexagon"></div></div>
+            </div>
+
+            <div id="hexagon-group-3" class="hexagon-group">
+              <div class="hexagon-container"><div class="hexagon"></div></div>
+              <div class="hexagon-container"><div class="hexagon"></div></div>
+              <div class="hexagon-container"><div class="hexagon"></div></div>
+              <div class="hexagon-container"><div class="hexagon"></div></div>
+              <div class="hexagon-container"><div class="hexagon"></div></div>
+              <div class="hexagon-container"><div class="hexagon"></div></div>
+              <div class="hexagon-container"><div class="hexagon"></div></div>
+            </div>
+
+            <div id="hexagon-group-4" class="hexagon-group">
+              <div class="hexagon-container"><div class="hexagon"></div></div>
+              <div class="hexagon-container"><div class="hexagon"></div></div>
+              <div class="hexagon-container"><div class="hexagon"></div></div>
+              <div class="hexagon-container"><div class="hexagon"></div></div>
+              <div class="hexagon-container"><div class="hexagon"></div></div>
+              <div class="hexagon-container"><div class="hexagon"></div></div>
+              <div class="hexagon-container"><div class="hexagon"></div></div>
+              <div class="hexagon-container"><div class="hexagon"></div></div>
+            </div>
+
+            <div id="hexagon-group-5" class="hexagon-group">
+              <div class="hexagon-container"><div class="hexagon"></div></div>
+              <div class="hexagon-container"><div class="hexagon"></div></div>
+              <div class="hexagon-container"><div class="hexagon"></div></div>
+              <div class="hexagon-container"><div class="hexagon"></div></div>
+              <div class="hexagon-container"><div class="hexagon"></div></div>
+              <div class="hexagon-container"><div class="hexagon"></div></div>
+              <div class="hexagon-container"><div class="hexagon"></div></div>
+              <div class="hexagon-container"><div class="hexagon"></div></div>
+              <div class="hexagon-container"><div class="hexagon"></div></div>
+            </div>
+
+            <div id="hexagon-group-6" class="hexagon-group">
+              <div class="hexagon-container"><div class="hexagon"></div></div>
+              <div class="hexagon-container"><div class="hexagon"></div></div>
+              <div class="hexagon-container"><div class="hexagon"></div></div>
+              <div class="hexagon-container"><div class="hexagon"></div></div>
+              <div class="hexagon-container"><div class="hexagon"></div></div>
+              <div class="hexagon-container"><div class="hexagon"></div></div>
+              <div class="hexagon-container"><div class="hexagon"></div></div>
+              <div class="hexagon-container"><div class="hexagon"></div></div>
+            </div>
+
+            <div id="hexagon-group-7" class="hexagon-group">
+              <div class="hexagon-container"><div class="hexagon"></div></div>
+              <div class="hexagon-container"><div class="hexagon"></div></div>
+              <div class="hexagon-container"><div class="hexagon"></div></div>
+              <div class="hexagon-container"><div class="hexagon"></div></div>
+              <div class="hexagon-container"><div class="hexagon"></div></div>
+              <div class="hexagon-container"><div class="hexagon"></div></div>
+              <div class="hexagon-container"><div class="hexagon"></div></div>
+            </div>
+
+            <div id="hexagon-group-8" class="hexagon-group">
+              <div class="hexagon-container"><div class="hexagon"></div></div>
+              <div class="hexagon-container"><div class="hexagon"></div></div>
+              <div class="hexagon-container"><div class="hexagon"></div></div>
+              <div class="hexagon-container"><div class="hexagon"></div></div>
+              <div class="hexagon-container"><div class="hexagon"></div></div>
+              <div class="hexagon-container"><div class="hexagon"></div></div>
+            </div>
+
+            <div id="hexagon-group-9">
+              <div class="hexagon-container"><div class="hexagon"></div></div>
+              <div class="hexagon-container"><div class="hexagon"></div></div>
+              <div class="hexagon-container"><div class="hexagon"></div></div>
+              <div class="hexagon-container"><div class="hexagon"></div></div>
+              <div class="hexagon-container"><div class="hexagon"></div></div>
+            </div>
+          </div>
+          <div class="container-info">
+            <div id="container-info-top" class="container-info-top">
+              <a href="/">
+                <img class="logo" src="assets/img/logo.png" alt="Evolution of Moths" />
+              </a>
+
+              <span class="button-connect" onclick="disconnect()">Disconnect</span>
+            </div>
+            <div class="container-info-middle">
+              <div>
+                <div class="wrapper-info">
+                  <div class="info-label">Next generation</div>
+                  <div id="timeNextGeneration" class="info-data">0s</div>
+                </div>
+                <div class="wrapper-info">
+                  <div class="info-label">Generation of the<br/>current environment</div>
+                  <div id="currentEnvironment" class="info-data">0</div>
+                </div>
+              </div>
+              <div>
+                <div class="wrapper-info">
+                  <div class="info-label">Next environment</div>
+                  <div id="timeNextEnvironment" class="info-data">0s</div>
+                </div>
+                <div class="wrapper-info">
+                  <div class="info-label">Current<br/>environment color</div>
+                  <div id="currentEnvironmentColor" class="info-color"></div>
+                </div>
+              </div>
+            </div>
+            <div class="container-info-bottom">
+              <a href="/" class="back-home">
+                <img class="arrow-down-icon" src="assets/img/arrow-down-outline.svg" alt="Down arrow" />
+                <span>BACK<br/>TO HOME</span>
+              </a>
+              <a href="https://github.com/biointelligence/evolution-of-moths" target="_blank" class="github-icon" rel="noopener noreferrer" aria-label="GitHub repository"></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

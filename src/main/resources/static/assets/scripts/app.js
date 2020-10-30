@@ -9,11 +9,11 @@ function connect(reconnect) {
     console.log(window.location.href + 'evolution');
     var hostName = new URL(window.location.href).hostname;
     const port = new URL(window.location.href).port;
-    
-    if (port != "") {
+
+    if (port !== "") {
       hostName = hostName + ":" + port;
     }
-    
+
     const socket = new SockJS("http://" + hostName + "/evolution");
     stompClient = Stomp.over(socket);
     stompClient.connect({}, function (frame) {
@@ -68,10 +68,6 @@ function disconnect() {
             btn.textContent = "Disconnect";
         });
     }
-}
-
-function scrollToContent() {
-    window.scrollTo(0, document.getElementById("content").offsetTop - 20);
 }
 
 function removeLoader() {
