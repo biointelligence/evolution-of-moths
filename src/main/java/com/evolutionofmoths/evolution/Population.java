@@ -77,8 +77,10 @@ public abstract class Population {
 	 */
 	private void calculatePercentFitness(double totalFitness) {
 		for (Individual individual : individuals) {
-			if (totalFitness > 0)
-			individual.setPercentFitness((individual.getFitness() * 100) / totalFitness);
+			if (totalFitness > 0) {
+				individual.setPercentFitness((individual.getFitness() * 100) / totalFitness);
+			}
+			
 		}
 	}
 
