@@ -111,7 +111,8 @@ public class NaturalSelection {
 				// It performs the crossing of the fittest resulting in two individuals.
 				try {
 					children = individual1.crossOver(individual2, rateCrossOver);
-				} catch (Exception e) {
+				} catch (CloneNotSupportedException ce) {
+					log.info("Cloning Failed !");
 					children = new Individual[2];
 					children[0] = individual1;
 					children[1] = individual2;
