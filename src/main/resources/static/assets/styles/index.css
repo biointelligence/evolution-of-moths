@@ -4,9 +4,12 @@
   display: flex;
   flex-direction: column;
   width: 900px;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
 }
 
 .description-moths {
+	
   margin-bottom: 1.75rem;
 }
 
