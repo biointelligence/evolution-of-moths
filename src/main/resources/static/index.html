@@ -2,10 +2,11 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8">
-    <title>Evolution of Moths</title>
+    <title>Home | Evolution of Moths</title>
 
     <link rel="icon" href="favicon.ico">
     <link rel="stylesheet" href="assets/styles/styles.css">
+    <link rel="stylesheet" href="assets/styles/index.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap">
     <link rel="manifest" href="manifest.json">
 
@@ -20,10 +21,6 @@
     <meta http-equiv="content-language" content="en-US">
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 
-    <script src="/webjars/sockjs-client/sockjs.min.js"></script>
-    <script src="/webjars/stomp-websocket/stomp.min.js"></script>
-    <script src="assets/scripts/app.js"></script>
-
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-150736691-2"></script>
     <script>
@@ -35,144 +32,17 @@
     </script>
   </head>
   <body onload="connect(false)">
-    <div id="loader">
-      <div class="load-group">
-        <div class="big-square">
-          <div class="square first"></div>
-          <div class="square second"></div>
-          <div class="square third"></div>
-          <div class="square fourth"></div>
-        </div>
-        <p class="load-text">loading</p>
-      </div>
-    </div>
-    <main id="main">
-      <div id="container-main">
-        <div id="hive">
-          <div id="container-info-top-mobile" class="container-info-top">
-            <img class="logo" src="assets/img/logo.png" alt="Evolution of Moths" />
-            <span class="button-connect" onclick="disconnect()">Disconnect</span>
+    <main>
+      <div class="container-content">
+        <div class="banner-moths">
+          <div class="moths-banner">
+            <h1>Evolution of Moths</h1>
+            <p class="description-moths">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            <a class="button-view-moths" href="moths.html">View Moths</a>
           </div>
-          <div id="grid">
-            <div id="hexagon-group-1" class="hexagon-group">
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-            </div>
 
-            <div id="hexagon-group-2" class="hexagon-group">
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-            </div>
-
-            <div id="hexagon-group-3" class="hexagon-group">
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-            </div>
-
-            <div id="hexagon-group-4" class="hexagon-group">
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-            </div>
-
-            <div id="hexagon-group-5" class="hexagon-group">
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-            </div>
-
-            <div id="hexagon-group-6" class="hexagon-group">
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-            </div>
-
-            <div id="hexagon-group-7" class="hexagon-group">
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-            </div>
-
-            <div id="hexagon-group-8" class="hexagon-group">
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-            </div>
-
-            <div id="hexagon-group-9">
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-            </div>
-          </div>
-          <div class="container-info">
-            <div id="container-info-top" class="container-info-top">
-              <img class="logo" src="assets/img/logo.png" alt="Evolution of Moths" />
-              <span class="button-connect" onclick="disconnect()">Disconnect</span>
-            </div>
-            <div class="container-info-middle">
-              <div>
-                <div class="wrapper-info">
-                  <div class="info-label">Next generation</div>
-                  <div id="timeNextGeneration" class="info-data">0s</div>
-                </div>
-                <div class="wrapper-info">
-                  <div class="info-label">Generation of the<br/>current environment</div>
-                  <div id="currentEnvironment" class="info-data">0</div>
-                </div>
-              </div>
-              <div>
-                <div class="wrapper-info">
-                  <div class="info-label">Next environment</div>
-                  <div id="timeNextEnvironment" class="info-data">0s</div>
-                </div>
-                <div class="wrapper-info">
-                  <div class="info-label">Current<br/>environment color</div>
-                  <div id="currentEnvironmentColor" class="info-color"></div>
-                </div>
-              </div>
-            </div>
-            <div onclick="scrollToContent()" class="container-info-bottom">
-              <img class="arrow-down-icon" src="assets/img/arrow-down-outline.svg" alt="Down arrow" />
-              <span>See more about the project</span>
-            </div>
+          <div class="">
+            <img src="" alt="" />
           </div>
         </div>
       </div>

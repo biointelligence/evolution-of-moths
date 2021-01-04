@@ -1,5 +1,7 @@
 {
   "name": "Evolution of Moths",
   "start_url": "/",
-  "display": "standalone"
+  "display": "standalone",
+  "theme_color": "#2F3136",
+  "background_color": "#F0F0F7"
 }
