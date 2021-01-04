@@ -2,10 +2,11 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8">
-    <title>Evolution of Moths</title>
+    <title>Home | Evolution of Moths</title>
 
     <link rel="icon" href="favicon.ico">
     <link rel="stylesheet" href="assets/styles/styles.css">
+    <link rel="stylesheet" href="assets/styles/index.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap">
     <link rel="manifest" href="manifest.json">
 
@@ -20,10 +21,6 @@
     <meta http-equiv="content-language" content="en-US">
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 
-    <script src="/webjars/sockjs-client/sockjs.min.js"></script>
-    <script src="/webjars/stomp-websocket/stomp.min.js"></script>
-    <script src="assets/scripts/app.js"></script>
-
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-150736691-2"></script>
     <script>
@@ -35,144 +32,13 @@
     </script>
   </head>
   <body onload="connect(false)">
-    <div id="loader">
-      <div class="load-group">
-        <div class="big-square">
-          <div class="square first"></div>
-          <div class="square second"></div>
-          <div class="square third"></div>
-          <div class="square fourth"></div>
-        </div>
-        <p class="load-text">loading</p>
-      </div>
-    </div>
-    <main id="main">
-      <div id="container-main">
-        <div id="hive">
-          <div id="container-info-top-mobile" class="container-info-top">
-            <img class="logo" src="assets/img/logo.png" alt="Evolution of Moths" />
-            <span class="button-connect" onclick="disconnect()">Disconnect</span>
-          </div>
-          <div id="grid">
-            <div id="hexagon-group-1" class="hexagon-group">
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-            </div>
-
-            <div id="hexagon-group-2" class="hexagon-group">
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-            </div>
-
-            <div id="hexagon-group-3" class="hexagon-group">
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-            </div>
-
-            <div id="hexagon-group-4" class="hexagon-group">
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-            </div>
-
-            <div id="hexagon-group-5" class="hexagon-group">
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-            </div>
-
-            <div id="hexagon-group-6" class="hexagon-group">
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-            </div>
-
-            <div id="hexagon-group-7" class="hexagon-group">
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-            </div>
-
-            <div id="hexagon-group-8" class="hexagon-group">
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-            </div>
-
-            <div id="hexagon-group-9">
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-              <div class="hexagon-container"><div class="hexagon"></div></div>
-            </div>
-          </div>
-          <div class="container-info">
-            <div id="container-info-top" class="container-info-top">
-              <img class="logo" src="assets/img/logo.png" alt="Evolution of Moths" />
-              <span class="button-connect" onclick="disconnect()">Disconnect</span>
-            </div>
-            <div class="container-info-middle">
-              <div>
-                <div class="wrapper-info">
-                  <div class="info-label">Next generation</div>
-                  <div id="timeNextGeneration" class="info-data">0s</div>
-                </div>
-                <div class="wrapper-info">
-                  <div class="info-label">Generation of the<br/>current environment</div>
-                  <div id="currentEnvironment" class="info-data">0</div>
-                </div>
-              </div>
-              <div>
-                <div class="wrapper-info">
-                  <div class="info-label">Next environment</div>
-                  <div id="timeNextEnvironment" class="info-data">0s</div>
-                </div>
-                <div class="wrapper-info">
-                  <div class="info-label">Current<br/>environment color</div>
-                  <div id="currentEnvironmentColor" class="info-color"></div>
-                </div>
-              </div>
-            </div>
-            <div onclick="scrollToContent()" class="container-info-bottom">
-              <img class="arrow-down-icon" src="assets/img/arrow-down-outline.svg" alt="Down arrow" />
-              <span>See more about the project</span>
-            </div>
+    <main>
+      <div class="container-content">
+        <div class="banner-moths">
+          <div class="moths-banner">
+            <h1>Evolution of Moths</h1>
+            <p class="description-moths"><b>Evolution of Moths</b> establishes an intimate relationship between human ability to solve problems and natural processes. It is invaluable to observe how nature is able to find the best way to continue its ecosystem.</p>
+            <a class="button-view-moths" href="moths.html">View Evolution</a>
           </div>
         </div>
       </div>
@@ -180,7 +46,6 @@
         <div id="content">
           <h2>Inspiration</h2>
           <div>
-            <p class="paragraph"><b>Evolution of Moths</b> establishes an intimate relationship between human ability to solve problems and natural processes. It is invaluable to observe how nature is able to find the best way to continue its ecosystem.</p>
             <p class="paragraph"><b>Evolution of Moths</b> presents a strategy based on evolutionary biology with the purpose of offering solutions to real problems, whether scientific, technological or business. Operating on the logic of genetic algorithms, it is possible to validate by observing in a simplistic model the adaptation process of the moths during the industrial revolution in England.</p>
             <p class="paragraph">This platform simulates a set of genes trying to adapt to its surroundings by basic natural selection concepts. The set of genes belongs to a fictional species which the ones with the closest pigmentation to the environment have better camouflage so they’re less likely to be tracked by its predator. Thus, they manage to live until reaching sexual maturity and pass down their genes.</p>
             <p class="paragraph">The platform keeps running continuously and all viewers can see the same evolution taking place.</p>
@@ -211,15 +76,10 @@
             <p class="paragraph">Since evolution is defined by change in frequency of inherited characteristics over time, the <i>Biston betularia</i> dark frequency varied as result of the beggining of Insdustrial Revolution and later by Anti Poluttion Laws.</p>
           </div>
 
-          <h2>More infos</h2>
-          <div class="more-info">
-            <iframe id="video" src="https://www.youtube.com/embed/Pop-xetGaBM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            <p id="subtitle-video">Source: Rachel Taylor</p>
-          </div>
         </div>
       </div>
       <footer>
-        <p style="margin-bottom: .5rem">© 2020 by <a class="footer-link" target="_blank" href="https://www.linkedin.com/in/carlos-aiello-ti/">Carlos Aiello</a> and <a class="footer-link" target="_blank" href="https://www.linkedin.com/in/felipe-cortes/">Felipe Côrtes</a></p>
+        <p style="margin-bottom: .5rem">© 2021 by <a class="footer-link" target="_blank" href="https://www.linkedin.com/in/carlos-aiello-ti/">Carlos Aiello</a> and <a class="footer-link" target="_blank" href="https://www.linkedin.com/in/felipe-cortes/">Felipe Côrtes</a></p>
 
         <p style="font-size: .8rem;text-align: center;">Special thanks to <a class="footer-contributors-link" target="_blank" href="https://www.instagram.com/brnnr.r/">Brenner Ribeiro</a>, <a class="footer-contributors-link" target="_blank" href="https://www.linkedin.com/in/brenno-hochwart-b7b738185/">Brenno Hochwart</a>, <a class="footer-contributors-link" target="_blank" href="https://instagram.com/juliscornia">Júlia Soares</a> and all contributors.</p>
       </footer>
