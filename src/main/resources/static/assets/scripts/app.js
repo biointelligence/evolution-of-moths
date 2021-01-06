@@ -6,15 +6,19 @@ let generalCount = 0;
 let isConnect = true;
 
 function connect(reconnect) {
-    console.log(window.location.href + 'evolution');
+
     var hostName = new URL(window.location.href).hostname;
     const port = new URL(window.location.href).port;
 
     if (port !== "") {
-      hostName = hostName + ":" + port;
+      hostName = "http://" + hostName + ":" + port;
+    } else {
+      hostName = "https://" + hostName;
     }
+    
+    console.log(hostName);
 
-    const socket = new SockJS("http://" + hostName + "/evolution");
+    const socket = new SockJS(hostName + "/evolution");
     stompClient = Stomp.over(socket);
     stompClient.connect({}, function (frame) {
         stompClient.subscribe("/topic/evolution-of-moths", function (evolutionOfMoths) {
